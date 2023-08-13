@@ -5,23 +5,101 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-end-rgb: 230, 230, 230;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
+    --background-start-rgb: 30, 30, 30;
     --background-end-rgb: 0, 0, 0;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.reveal-text {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.neon-text {
+  background-image: linear-gradient(135deg, #8A2BE2, #4169E1, #FF69B4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+}
+/* using svg repeated background as utility */
+/* @layer utilities {
+  .bg-repeat-svg {
+    background-image: url('../public/hollowed-boxes.svg');
+    background-repeat: repeat;
+    background-attachment: scroll;
+  }
+} */
+
+@layer components {
+  .my-table-spacing {
+    border-spacing: theme("spacing.3");
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none !important;  /* IE and Edge */
+    scrollbar-width: none !important;  /* Firefox */
+}
+}
+
+
+
+.nav-content > ul {
+  background: none !important;
+  backdrop-filter: none !important;
+  scrollbar-width: none !important;
+  padding-top: 50px !important;
+  overflow-y: auto;
+  /* For Firefox */
+  -ms-overflow-style: none; 
+  /* For Internet Explorer and Microsoft Edge */
+}
+.nav-content > ul ::-webkit-scrollbar {
+  display: none; /* For WebKit-based browsers (Chrome, Safari) */
+}
+
+.glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 80%);
+}
+
+
+
+div[data-state="open"].open-collapse {
+  color: orange !important;
+  padding:10px 0px 0px 0px;
+}
+
+.much-letter-spacing {
+  letter-spacing: 0.01em; /* Adjust the value as needed */
+}
+
+.shadow-overlay {
+  border-radius: 8px;
+  inset: -1px;
+  opacity: 0; /* Start with opacity 0, will change on hover */
+}
+
+/* Hover effect */
+.card-container:hover .shadow-overlay {
+  opacity: 1;
 }
