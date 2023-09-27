@@ -46,32 +46,31 @@ The project also incorporates comment features and team creation, enhancing the 
 
 ![Home page](https://user-images.githubusercontent.com/68379239/270390264-2065b9a5-a01f-4d12-b6ff-38e3adbe02f9.png)
 
-<p align="center">*Home Page*</p>
+<p align="center">Home Page</p>
 
 ![Search page](https://user-images.githubusercontent.com/68379239/270390282-831ec684-4644-44e0-a579-469faf1d1394.png)
 
-<div style='text-align: center; font-style: italic;'> Search page <br></br> </div>
+<p align="center">Search Page</p>
 
 ![Profile page](https://user-images.githubusercontent.com/68379239/270390294-a4783fb1-c30e-4d62-9922-77b5ca929da3.png)
 
-<div style='text-align: center; font-style: italic;'> Profile page <br></br> </div>
-
+<p align="center">Profile Page</p>
 
 ![Clan page](https://user-images.githubusercontent.com/68379239/270390307-de540ff4-b9d2-4e1d-ad9f-acb3f3172c88.png)
 
-<div id="ClanPage" style='text-align: center; font-style: italic;'>Clan page<br></br> </div>
+<p align="center">Clan Page</p>
 
 ![Login page](https://user-images.githubusercontent.com/68379239/270390310-67b69976-c9e1-4012-a345-1f8c07540adb.png)
 
-<div style='text-align: center; font-style: italic;'> Login page <br></br> </div>
+<p align="center">Login Page</p>
 
 ![Team creation](https://user-images.githubusercontent.com/68379239/270390321-33743c55-27f1-4cd4-9f4f-6b5bcfdb5a77.png)
 
-<div style='text-align: center; font-style: italic;'> Team creation <br></br> </div>
+<p align="center">Team creation</p>
 
 ![Created Teams](https://user-images.githubusercontent.com/68379239/270390326-fe359026-8cdb-4f06-92e6-17a85898da53.png)
 
-<div style='text-align: center; font-style: italic;'> Created teams (required authentication) <br></br> </div>
+<p align="center">Created teams (required authentication)</p>
 
 
 
