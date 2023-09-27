@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 app.prepare().then(() => {
   const server = express();
 
-  server.get('/clanData/:clanInfo', async (req, res) => {
+  server.get('/clanDatabase/:clanInfo', async (req, res) => {
     const { clanInfo } = req.params;
     const options = {
       method: 'GET',
@@ -52,7 +52,7 @@ app.prepare().then(() => {
     }
   });
 
-  server.get('/playerData/:playerInfo', async (req, res) => {
+  server.get('/playerDatabase/:playerInfo', async (req, res) => {
     const { playerInfo } = req.params;
     const apiUrls = [
       `https://api.clashofclans.com/v1/players/%23${playerInfo}`,
