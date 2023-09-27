@@ -43,7 +43,6 @@ The project also incorporates comment features and team creation, enhancing the 
 - Firebase (for data storage)
 
 ## Screenshots
-[Clan Page](#clan-page)
 
 ![Home page](https://user-images.githubusercontent.com/68379239/270390264-2065b9a5-a01f-4d12-b6ff-38e3adbe02f9.png)
 
