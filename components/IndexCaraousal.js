@@ -18,7 +18,17 @@ const IndexCaraousal = ({data}) => {
     },
     slides: {
       perView: 1,
+      spacing: 30,
     },
+    created(s) {
+      s.moveToIdx(3, true, animation)
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs + 3, true, animation)
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs + 3, true, animation)
+    }
   })
 
   return (
