@@ -46,7 +46,7 @@ The project also incorporates comment features and team creation, enhancing the 
 
 ![Home page](https://user-images.githubusercontent.com/68379239/270390264-2065b9a5-a01f-4d12-b6ff-38e3adbe02f9.png)
 
-<p align="center"> Home Page <br></br> </p>
+<p align="center">*Home Page*</p>
 
 ![Search page](https://user-images.githubusercontent.com/68379239/270390282-831ec684-4644-44e0-a579-469faf1d1394.png)
 
