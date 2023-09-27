@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
   const { clanInfo } = context.query;
   const options = {
     method: 'GET',
-    url: `http://localhost:${process.env.PORT || 3000}/clanData/${clanInfo}`,
+    url: `http://localhost:${process.env.PORT || 3000}/clanDatabase/${clanInfo}`,
   };
 
   try {
