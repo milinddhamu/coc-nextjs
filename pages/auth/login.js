@@ -49,16 +49,13 @@ const login = ({providers}) => {
         <Input.Password labelPlaceholder="Password" onChange={(e)=> setPassword(e.target.value)} css={{minWidth:"260px"}}/>
         <Button color="secondary" flat className="bg-violet-600/60 hover:bg-violet-800/70">Log in</Button>
         <Divider className="max-w-sm"/>
-        {Object.values(providers).map((provider) => (
-        <div key={provider.name}>
-          {(!googleButton) ? <Button color="secondary" flat className="bg-violet-600/60 hover:bg-violet-800/70" onClick={() => signIn(provider.id , { callbackUrl: '/' }) && setGoogleButton(true)}>
-            Sign in with {provider?.name} <AiOutlineGoogle className="scale-125 text-center mx-2 mt-[.5]" />
+        <div key={"google"}>
+          {(!googleButton) ? <Button color="secondary" flat className="bg-violet-600/60 hover:bg-violet-800/70" onClick={() => signIn("google" , { callbackUrl: '/' }) && setGoogleButton(true)}>
+            Sign in with Google <AiOutlineGoogle className="scale-125 text-center mx-2 mt-[.5]" />
           </Button> : <Button disabled color="secondary" bordered >
           <Loading type="spinner" color="currentColor" size="sm" />
           </Button> }
         </div>
-      ))}
-
         </div>
       </section>
       </>

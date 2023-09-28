@@ -3,6 +3,7 @@ import ClanMainInfo from "@/components/ClanMainInfo";
 import { useState, useEffect } from 'react';
 import { Text, Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
+import Loading from "@/utils/Loading"
 
 const ClanInfo = ({ data }) => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const ClanInfo = ({ data }) => {
     },1500)    
   }, []);
   if (loading) {
-    return <h1>Loading...</h1>
+    return <Loading />
   } 
   
   return (
