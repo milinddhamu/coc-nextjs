@@ -18,19 +18,18 @@ const CaraousalCard = ({data,name}) => {
       <Card className="border-[.5px] border-gray-500/20 mx-3 p-3" css={{borderRadius:"8px",minWidth:"350px"}} >
         <Text b className="flex justify-center w-full border-b-[.5px] border-gray-500/20 pb-3">{name}</Text>
           <Spacer y={.5}/> 
-          {allData?.map((a,i)=>{
+          {allData ? 
+          allData?.map((a,i)=>{
             return (
               <>
-            {/* <div key={a?.name} className="flex w-full justify-between">
-            <Link href="#" color={nameColor} underline>
-                {a?.name}
-              </Link>
-            <Text>{i + 1}</Text>
-            </div> */}
             <CaraousalInfo key={a?.name} allData={a} endpoint={name} index={i+1}/>
             </>
             )
-          })}
+          }) : <><div className="flex w-full items-center justify-center">
+            <Spacer y={4} />
+            <Text weight="semibold" size={14}>API not working...</Text>
+            <Spacer />
+            </div></> }
           </Card>
         </>
         );

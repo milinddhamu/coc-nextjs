@@ -20,6 +20,7 @@ export default function Home({data}) {
   console.log(data)
   const {data:session} = useSession;
   const [user , setUser ] = useRecoilState(userState);
+
   const controls = useAnimation();
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

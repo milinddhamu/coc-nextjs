@@ -4,7 +4,7 @@ import { Card, Container, Text, Row, Col, User, Avatar, Button, Navbar, Switch }
 import { useState, useEffect } from 'react';
 import Image from 'next/image'
 import { useRouter } from "next/router";
-
+import Loading from "@/utils/Loading"
 const PlayerInfo = ({ data }) => {
   const [loading, setLoading] = useState(true)
   const [fetchedData, setFetchedData] = useState(null);
@@ -15,7 +15,7 @@ const PlayerInfo = ({ data }) => {
     },1500)    
   }, []);
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
     }
   return (
     <>{fetchedData ?  <PlayerProfile allData={fetchedData} /> : <Text>Api is not working</Text> }
