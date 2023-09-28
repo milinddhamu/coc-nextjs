@@ -1,6 +1,9 @@
 import { Card, Col, Text,Link,Spacer, Container } from "@nextui-org/react";
+import Script from 'next/script';
+import { useTheme } from '@nextui-org/react'
 
 const LeftSection = ({townHall}) => {
+  const {isDark} = useTheme();
   return (
     <>
       <main className='flex flex-grow flex-col px-6 gap-2'>
@@ -25,8 +28,7 @@ const LeftSection = ({townHall}) => {
       </div>
         <Card variant="bordered" className="flex flex-col items-center max-h-96 min-h-72 w-full">
           <div className='overflow-y-scroll scrollbar-hide w-full'>
-            <a
-              className="twitter-timeline" data-width="auto" data-height="auto" data-theme="dark" href="https://twitter.com/ClashofClans?ref_src=twsrc%5Etfw">Tweets by ClashofClans</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" data-theme={isDark ? "dark" : "light"} href="https://twitter.com/ClashofClans?ref_src=twsrc%5Etfw">Tweets by ClashofClans</a> <Script async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
           </div>
         </Card>
       </main>

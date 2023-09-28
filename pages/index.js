@@ -1,10 +1,8 @@
 import { Navbar, Button,Grid,Badge,Row,Col, Link,Spacer, Text, Card, Radio, Switch } from "@nextui-org/react";
 import { useTheme as useNextTheme } from 'next-themes'
 import { useTheme } from '@nextui-org/react'
-import { Classic } from "@theme-toggles/react"
 import "@theme-toggles/react/css/Classic.css"
 import { motion,AnimatePresence,useAnimation   } from "framer-motion";
-import ThrowingLetters from "@/utils/ThrowingLetters";
 import RevealText from "@/utils/RevealText";
 import { useState, useEffect } from "react";
 import NavbarMain from "@/components/NavbarMain";
@@ -14,10 +12,14 @@ import { GoArrowUpRight } from "react-icons/go";
 import {useRouter} from "next/router"
 import axios from "axios";
 import IndexCaraousal from "@/components/IndexCaraousal";
+import { useRecoilState } from 'recoil';
+import { userState } from "@/recoil/storage";
+import { useSession } from "next-auth/react";
 
 export default function Home({data}) {
   console.log(data)
-
+  const {data:session} = useSession;
+  const [user , setUser ] = useRecoilState(userState);
   const controls = useAnimation();
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -43,9 +45,6 @@ export default function Home({data}) {
     };
   }, [controls]);
 
-
-
-
   const router = useRouter()
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
@@ -53,7 +52,7 @@ export default function Home({data}) {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false)
-    }, 5000)
+    }, 500)
   }, [])
 
   const gradientColorMarquee = isDark ? [0, 0, 0] : [255, 255, 255] 
@@ -214,20 +213,18 @@ export default function Home({data}) {
             </Text>
             </section>
             <Spacer y={1}/>
-          <IndexCaraousal data={data} />
+            {data && 
+          <IndexCaraousal data={data} /> }
           </main>
         </>}
 
     </>
-
   )
 }
 
 export async function getServerSideProps() {
   const locationId = 32000113;
   const limit = 10;
-
-  // List of endpoints to fetch data from
   const endpoints = [
     'players',
     'clans',
@@ -236,10 +233,8 @@ export async function getServerSideProps() {
     'capitals',
   ];
 
-  // Prepare an array to store the fetched data
   const data = {};
 
-  // Loop through each endpoint and fetch data
   for (const endpoint of endpoints) {
     const url = `https://api.clashofclans.com/v1/locations/${locationId}/rankings/${endpoint}?limit=${limit}`;
     const options = {
@@ -258,7 +253,6 @@ export async function getServerSideProps() {
       data[endpoint] = null;
     }
   }
-
   return {
     props: {
       data,

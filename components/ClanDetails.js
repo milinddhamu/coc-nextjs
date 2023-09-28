@@ -1,6 +1,7 @@
 import ClanMainInfo from "./ClanMainInfo";
 import { Container,Card,Text,Image } from "@nextui-org/react";
-import NavbarMain from "./NavbarMain" 
+import NavbarMain from "./NavbarMain";
+ 
 const ClanDetails = ({ image , name }) => {
   return (
     <>

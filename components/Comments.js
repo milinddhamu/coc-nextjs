@@ -79,13 +79,14 @@ const Comments = ({playerTag}) => {
         </div>
       </Card.Body>
       {!session &&
-      <div className="w-full flex justify-center bg-blue-400/40"><Link href="/auth/login" color="primary" underline className="uppercase text-xs p-1">
-          Please SignIn to post comment
+      <div className="w-full flex justify-center font-semibold bg-blue-400/40"><Link href="/auth/login" color="primary" underline className="uppercase text-xs p-1">
+        <h6>Please login/signin to post comment</h6>
         </Link></div> }
       <Card.Footer css={{padding:"0px 0px",margin:"0px 0px",borderTopWidth:"1px",borderColor:"rgb(107 114 128/0.2)",borderRadius:"0px"}}>
         <div className={`flex flex-col w-full h-full md:flex-row ${footerBg}`}>
           <div className="flex w-full px-3 pt-3 md:pb-3 md:pr-0">
           <Textarea
+          id="commentstext"
           css={{width:"100%",height:"100%"}}
           className="border-[.5px] border-gray-500/20"
           animated
