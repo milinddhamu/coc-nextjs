@@ -22,7 +22,7 @@ const ClanInfo = ({ data }) => {
   
   return (
     <>  {fetchedData ?         <ClanMainInfo allData={fetchedData} />
-  :<Text>Api is not working</Text>  }    
+  :<div className="flex min-h-screen min-w-screen items-center justify-center"><Text>Api is not working</Text></div>  }    
     </>
   );
 }

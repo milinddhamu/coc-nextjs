@@ -18,7 +18,7 @@ const PlayerInfo = ({ data }) => {
     return <Loading />;
     }
   return (
-    <>{fetchedData ?  <PlayerProfile allData={fetchedData} /> : <Text>Api is not working</Text> }
+    <>{fetchedData ?  <PlayerProfile allData={fetchedData} /> : <div className="flex min-h-screen min-w-screen items-center justify-center"><Text>Api is not working</Text></div> }
   </>
   );
 }
