@@ -15,7 +15,7 @@ const CaraousalCard = ({data,name}) => {
   console.log(data , name)
   return (
     <>
-      <Card className="border-[.5px] border-gray-500/20 mx-3 p-3" css={{borderRadius:"8px",minWidth:"350px"}} >
+      <Card  className="border-[.5px] border-gray-500/20 mx-3 p-3" css={{borderRadius:"8px",minWidth:"350px",shadow:"none"}} >
         <Text b className="flex justify-center w-full border-b-[.5px] border-gray-500/20 pb-3">{name}</Text>
           <Spacer y={.5}/> 
           {allData ? 
