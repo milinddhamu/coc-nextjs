@@ -8,10 +8,15 @@ import { Lilita_One } from "next/font/google"
 import cocLogo from '/public/assets/others/cocLogo.png'
 import { AnimatePresence } from 'framer-motion';
 import { SessionProvider } from "next-auth/react"
-const gasoekOne = Gasoek_One({weight: '400',
-subsets: ['latin'],})
-const lilitaOne = Lilita_One({weight: '400',
-subsets: ['latin'],})
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
+
+
 
 
 const lightTheme = createTheme({
@@ -67,10 +72,14 @@ const darkTheme = createTheme({
 const raleway = Raleway({ subsets: ['latin'], weight: ['100', '200', '500'], style: ['italic', 'normal'] })
 
 
-export default function App({ Component, pageProps,session }) {
+export default function App({ 
+  Component,
+  pageProps:{session , ...pageProps}
+  }){
 
   return (
     <SessionProvider session={session}>
+    <RecoilRoot>
     <NextThemesProvider
       defaultTheme="system"
       attribute="class"
@@ -80,12 +89,14 @@ export default function App({ Component, pageProps,session }) {
       }}
       >
       <NextUIProvider>
-      <> 
+      
         <Component {...pageProps} />
-        </>
+      
       </NextUIProvider>
     </NextThemesProvider>
+    </RecoilRoot>
     </SessionProvider>
+   
 
   )
 

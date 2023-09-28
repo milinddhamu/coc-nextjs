@@ -35,12 +35,13 @@ const IndexCaraousal = ({data}) => {
 
   return (
     <div ref={sliderRef} className="keen-slider bg-violet-400/30">
-      <div className="keen-slider__slide flex flex-col justify-center items-start p-8"> <Text weight="extrabold" size={84}  >Indian Rankings</Text>
-      <Text weight="normal" size={26}>Swipe to see..</Text></div>
+      <div className="keen-slider__slide flex flex-col justify-start items-start p-24"> <Text weight="extrabold" size={72}  >Indian Rankings</Text>
+      <Text weight="normal" size={26}>Players & Clan Rankings  	&#127942; </Text>
+      <Text weight="normal" size={24}>Swipe to see..</Text></div>
       <div className="keen-slider__slide py-12 px-6"><CaraousalCard data={data?.players} name={"Player Rankings"}/></div>
+      <div className="keen-slider__slide py-12 px-6"><CaraousalCard data={data['players-versus']} name={"Player Rankings Versus"}/></div>
        <div className="keen-slider__slide py-12 px-6"><CaraousalCard data={data?.clans} name={"Clan Rankings"}/></div> 
       <div className="keen-slider__slide  py-12 px-6"><CaraousalCard data={data['clans-versus']} name={"Clan Rankings Versus"}/></div>
-      <div className="keen-slider__slide py-12 px-6"><CaraousalCard data={data['players-versus']} name={"Player Rankings Versus"}/></div>
       <div className="keen-slider__slide py-12 px-6"><CaraousalCard data={data?.capitals} name={"Clan Capital Rankings"} /></div>
     </div>
   )
