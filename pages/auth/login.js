@@ -19,9 +19,9 @@ const login = ({providers}) => {
       router.push("/");
     }
   }, [session,router]);
-  const handleGoogleSignIn = ({provider}) => {
+  const handleGoogleSignIn = () => {
     setGoogleButton(true);
-    signIn(provider);
+    signIn("google");
   }
   return (
     <>
