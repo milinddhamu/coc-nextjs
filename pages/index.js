@@ -237,7 +237,7 @@ export async function getServerSideProps() {
   const data = {};
 
   for (const endpoint of endpoints) {
-    const url = `https://api.clashofclans.com/v1/locations/${locationId}/rankings/${endpoint}?limit=${limit}`;
+    const url = `https://cocproxy.royaleapi.dev/v1/locations/${locationId}/rankings/${endpoint}?limit=${limit}`;
     const options = {
       method: 'GET',
       url,
