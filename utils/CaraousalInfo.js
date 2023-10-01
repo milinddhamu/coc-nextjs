@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 
 const CaraousalInfo = ({allData,index,endpoint}) => {
-  console.log(allData)
   const router = useRouter();
   const textVariants = {
     hidden: { opacity: 0, x: '100%' },

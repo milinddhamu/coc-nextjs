@@ -103,3 +103,9 @@ div[data-state="open"].open-collapse {
 .card-container:hover .shadow-overlay {
   opacity: 1;
 }
+
+.truncate-text {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}

@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 app.prepare().then(() => {
   const server = express();
 
-  server.get('/clanDatabase/:clanInfo', async (req, res) => {
+  server.get('/api/clanDatabase/:clanInfo', async (req, res) => {
     const { clanInfo } = req.params;
     const options = {
       method: 'GET',
@@ -52,7 +52,7 @@ app.prepare().then(() => {
     }
   });
 
-  server.get('/playerDatabase/:playerInfo', async (req, res) => {
+  server.get('/api/playerDatabase/:playerInfo', async (req, res) => {
     const { playerInfo } = req.params;
     const apiUrls = [
       `https://cocproxy.royaleapi.dev/v1/players/%23${playerInfo}`,

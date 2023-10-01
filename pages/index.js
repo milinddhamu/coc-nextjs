@@ -17,7 +17,6 @@ import { userState } from "@/recoil/storage";
 import { useSession } from "next-auth/react";
 
 export default function Home({data}) {
-  console.log(data)
   const {data:session} = useSession;
   const [user , setUser ] = useRecoilState(userState);
 

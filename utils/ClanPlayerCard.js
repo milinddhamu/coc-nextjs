@@ -228,7 +228,7 @@ const ClanPlayerCard = ({ data,buttonState }) => {
                 </Col>
                 <Spacer x={.5} />
                 <Col span={7}>
-                  <Text size={15} weight="extrabold" className="truncate-text ">
+                  <Text title={data?.name} id={data?.name} size={15} weight="extrabold" className="truncate-text">
                     {data?.name || "-"}
                   </Text>
                   <Text size={10} color={getRoleColor(data?.role)} className="uppercase much-letter-spacing">
