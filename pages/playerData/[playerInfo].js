@@ -7,9 +7,8 @@ import { useRouter } from "next/router";
 import Loading from "@/utils/Loading"
 const PlayerInfo = ({ data }) => {
   const [loading, setLoading] = useState(true)
-  const [fetchedData, setFetchedData] = useState(null);
+  const [fetchedData, setFetchedData] = useState(data);
   useEffect(() => {
-    setFetchedData(data)
     setTimeout(()=>{
       setLoading(false);
     },1500)    
@@ -18,7 +17,13 @@ const PlayerInfo = ({ data }) => {
     return <Loading />;
     }
   return (
-    <>{fetchedData ?  <PlayerProfile allData={fetchedData} /> : <div className="flex min-h-screen min-w-screen items-center justify-center"><Text>Api is not working</Text></div> }
+    <>
+    <PlayerProfile allData={fetchedData} />
+    {/* {fetchedData ?  
+      <PlayerProfile allData={fetchedData} /> 
+      : 
+      <div className="flex min-h-screen min-w-screen items-center justify-center"><Text>Api is not working</Text></div> 
+    } */}
   </>
   );
 }
