@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
 
   const options = {
     method: 'GET',
-    url: `http://localhost:${process.env.PORT || 3000}/playerDatabase/${playerInfo}`,
+    url: `http://localhost:${process.env.PORT || 3000}/api/playerDatabase/${playerInfo}`,
   };
 
   try {
