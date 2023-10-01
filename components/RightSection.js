@@ -1,7 +1,7 @@
 import { Card, Col, Text, Container, Spacer,Avatar } from "@nextui-org/react";
 import Image from "next/image";
 import { parseISO, format } from 'date-fns';
-import augustCal from '@/public/assets/others/august-2023-calendar.jpg'
+import augustCal from '@/public/assets/others/july-2023-calendar.jpg'
 import Countdown from "react-countdown";
 import TraderRefresh from "@/utils/countDownTimer/TraderRefresh"
 import RaidWeekend from "@/utils/countDownTimer/RaidWeekend"
