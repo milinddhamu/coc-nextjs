@@ -7,9 +7,9 @@ import { useRouter } from "next/router";
 import Loading from "@/utils/Loading"
 const PlayerInfo = ({ data }) => {
   const [loading, setLoading] = useState(true)
-  const [fetchedData, setFetchedData] = useState(data);
-  console.log(data)
+  const [fetchedData, setFetchedData] = useState(null);
   useEffect(() => {
+    setFetchedData(data)
     setTimeout(()=>{
       setLoading(false);
     },1500)    
@@ -28,23 +28,66 @@ const PlayerInfo = ({ data }) => {
   );
 }
 
+// export async function getServerSideProps(context) {
+//   const { playerInfo } = context.query;
+//   const options = {
+//     method: 'GET',
+//     // url: `http://localhost:${process.env.PORT || 3000}/api/playerDatabase/${playerInfo}`,
+//     url: `api/playerData/query=${playerInfo}`
+//   };
+
+//   try {
+//     const response = await axios.request(options);
+//     const data = response.data;
+//     // context.res.setHeader('Cache-Control', 'no-store');
+//       return {
+//       props: {
+//       data,
+//   },
+// };
+//   } catch (error) {
+//     return {
+//       props: {
+//         data: null,
+//       },
+//     };
+//   }
+// }
+
+
 export async function getServerSideProps(context) {
   const { playerInfo } = context.query;
 
-  const options = {
-    method: 'GET',
-    url: `http://localhost:${process.env.PORT || 3000}/api/playerDatabase/${playerInfo}`,
-  };
+  if (!playerInfo) {
+    return {
+      props: {
+        data: null,
+      },
+    };
+  }
+
+  const apiUrls = [
+    `https://cocproxy.royaleapi.dev/v1/players/%23${playerInfo}`,
+    `https://cocproxy.royaleapi.dev/v1/goldpass/seasons/current`,
+  ];
+
+  const axiosRequests = apiUrls.map((url) =>
+    axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${process.env.COC_API}`,
+      },
+    })
+  );
 
   try {
-    const response = await axios.request(options);
-    const data = response.data;
-    context.res.setHeader('Cache-Control', 'no-store');
-      return {
+    const responses = await Promise.all(axiosRequests);
+    const data = responses.map((response) => response.data);
+
+    return {
       props: {
-      data,
-  },
-};
+        data,
+      },
+    };
   } catch (error) {
     return {
       props: {
@@ -53,6 +96,7 @@ export async function getServerSideProps(context) {
     };
   }
 }
+
 
 
 export default PlayerInfo;
