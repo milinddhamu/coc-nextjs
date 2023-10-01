@@ -8,6 +8,7 @@ import Loading from "@/utils/Loading"
 const PlayerInfo = ({ data }) => {
   const [loading, setLoading] = useState(true)
   const [fetchedData, setFetchedData] = useState(data);
+  console.log(data)
   useEffect(() => {
     setTimeout(()=>{
       setLoading(false);
@@ -18,12 +19,11 @@ const PlayerInfo = ({ data }) => {
     }
   return (
     <>
-    <PlayerProfile allData={fetchedData} />
-    {/* {fetchedData ?  
+    {fetchedData ?  
       <PlayerProfile allData={fetchedData} /> 
       : 
       <div className="flex min-h-screen min-w-screen items-center justify-center"><Text>Api is not working</Text></div> 
-    } */}
+    }
   </>
   );
 }
