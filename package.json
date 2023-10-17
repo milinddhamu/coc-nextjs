@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "node server/server.js"
+    "server": "node api/index.js"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.7.0",

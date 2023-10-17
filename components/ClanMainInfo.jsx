@@ -22,7 +22,7 @@ import {useRecoilValue,useResetRecoilState, useSetRecoilState} from "recoil";
 import { collection, addDoc,getDocs ,serverTimestamp,doc, deleteDoc,setDoc,arrayUnion } from "firebase/firestore"; 
 import { db } from "../firebase";
 import {useSession} from "next-auth/react";
-
+import { HiMenuAlt2 } from "react-icons/hi";
 
 const ClanMainInfo = ({allData}) => {
   const [firebaseUser , setFirebaseUser] = useState("");
@@ -118,7 +118,7 @@ const ClanMainInfo = ({allData}) => {
     let timer;
   
     if (input.length >= 1) {
-      setTimeout(()=>{
+      timer = setTimeout(()=>{
         setShowsugg(true)
       },500)
       timer = setTimeout(() => {
@@ -141,7 +141,7 @@ const ClanMainInfo = ({allData}) => {
         });
   
         setSuggestions(matchedSuggestions);
-      }, 300); // Set the desired delay in milliseconds
+      }, 300); // Set the delay in milliseconds
     } else {
       setMembers(memberList); // Reset the member list to the original list
       setSuggestions([]);
@@ -184,11 +184,12 @@ const ClanMainInfo = ({allData}) => {
   }
 }
 const handleSubmit = async () => {
-  toast(`Team ${teamName} saved successfully!`)
   if (!session) {
+    toast(`Please login to continue...`)
     return;
   }
   if(teamName.length === 0 && teamList.length > 15){
+    toast(`Please add atleast 15 players`)
     return;
   }
   if(firebaseUser !== sessionEmail) {
@@ -206,7 +207,8 @@ const handleSubmit = async () => {
       await addDoc(collection(db, 'users'),newUser)
       setTeamName('');
       getTeams();
-      handleResetTeam()
+      handleResetTeam();
+      toast(`Team ${teamName} saved successfully!`);
     } catch (error) {
       // Handle error
       console.error('Error adding comment:', error);
@@ -357,7 +359,7 @@ const handleSubmit = async () => {
     
     <section className="z-20 flex flex-col w-full h-1/3 fixed bottom-0 backdrop-blur-xl border-t-[.5px] border-gray-500/50 overflow-scroll">
       <div className="flex flex-row w-full justify-between p-2">
-      <Button color="success" flat auto size="sm" css={{backgroundColor:"#17C96470 !important"}} onClick={handleClickScrollTeamCancel}><RxCross1 className="scale-125"/></Button>
+      <Button color="primary" flat auto size="sm" css={{backgroundColor:"#006FEE70 !important"}} onClick={handleClickScrollTeamCancel}><HiMenuAlt2 className="scale-125"/></Button>
       <div className="flex flex-row gap-4">
       <Input
         css={{margin:"0px",padding:"0px"}}

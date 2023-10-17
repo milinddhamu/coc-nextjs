@@ -14,14 +14,26 @@ import 'react-toastify/dist/ReactToastify.css';
 import ProfileProgress from "./ProfileProgress"
 import { homeHeroes } from './Data/HomeArmyData';
 import { townHall,builderHall } from '@/utils/Data/TownHallData';
+import { AiOutlineUserAdd } from "react-icons/ai";
+import { MdOutlineAddModerator,MdOutlineDeleteOutline } from "react-icons/md";
+import {useSetRecoilState ,useRecoilValue} from "recoil"
+import { teamState } from "@/recoil/storage";
+import { BiUserCheck } from "react-icons/bi";
 
-const ClanPlayerCard = ({ data }) => {
+const ClanPlayerCard = ({ data,buttonState }) => {
+  const setTeam = useSetRecoilState(teamState);
+  const teamList = useRecoilValue(teamState);
+  const isPlayerAdded = (string,array) => array.includes(string);
+  const isPlayerAlreadyAdded = isPlayerAdded(data.tag, teamList);
   const townHallDefense = townHall[data.townHallLevel]?.townhallweaponlevel[data.townHallWeaponLevel]?.url
   const townHallStorage = townHall[data.townHallLevel]?.url
   const thImage = (data.townHallLevel > 11) ? townHallDefense : townHallStorage
   const bhImage = builderHall[data.builderHallLevel]?.url
   const { isDark } = useTheme();
-  const copyButton = isDark ? "#0F1212" : "#9BA1A6";
+  const copyButtonColor = isDark ? "#0F1212" : "#9BA1A6";
+  const teamButtonRemoveColor = isPlayerAlreadyAdded ? "#F3126080" : "#71717A";
+  const teamButtonAddColor = isPlayerAlreadyAdded ? "#17C96480" : "#F31260";
+
   const textVariants = {
     hidden: { opacity: 0, x: '100%' },
     visible: { opacity: 1, x: '0%' },
@@ -167,11 +179,25 @@ const ClanPlayerCard = ({ data }) => {
   };
   const shadowColor = isDark ? "rgb(255 255 255/0.15)" : "rgb(0 0 0/0.15)";
 
+  // functions to add and remove players from team
+  const handleAddPlayer = () => {
+    if(teamList.includes(data?.tag)) return
+    setTeam((prevPlayers)=> [
+      ...prevPlayers,
+      data?.tag
+    ]);
+
+  };
+  const handleRemovePlayer = () => {
+    setTeam((prevPlayers)=> 
+      prevPlayers.filter((player)=>player !== data?.tag)
+    );
+  };
   return (
     <>
       <Card
         onMouseMove={handleMouseMove}
-        className=" group relative transition-transform ease-in duration-200 "
+        className="group relative transition-transform ease-in duration-200 "
         css={{
           minWidth: "200px",
           maxWidth: "450px",
@@ -181,8 +207,8 @@ const ClanPlayerCard = ({ data }) => {
         
         }}>{/*error here inside opacity and group */}
           <motion.div
-          className="pointer-events-none absolute opacity-80 group-hover:opacity-100 !important transition ease-in duration-300" style={{ 
-            background: useMotionTemplate`radial-gradient(450px circle at ${mouseX}px ${mouseY}px, ${shadowColor},transparent 80%)` , borderRadius:"8px",inset:"-1px"}}></motion.div>
+          className="pointer-events-none absolute opacity-10 group-hover:opacity-100 transition-all ease-in duration-300" style={{ 
+            background: useMotionTemplate`radial-gradient(450px circle at ${mouseX}px ${mouseY}px, ${shadowColor},transparent 80%)` , borderRadius:"8px",inset:"-1px"}}/>
         <Card.Header className="w-full" css={{ padding: "0px 4px 4px 4px", margin: "0px" }}>
           <Row>
             <Col>
@@ -202,7 +228,7 @@ const ClanPlayerCard = ({ data }) => {
                 </Col>
                 <Spacer x={.5} />
                 <Col span={7}>
-                  <Text size={15} weight="extrabold" className="bg-clip-text bg-gradient-to-bl from-violet-600 to-yellow-300 text-transparent animate-text line-clamp-1">
+                  <Text title={data?.name} id={data?.name} size={15} weight="extrabold" className="truncate-text">
                     {data?.name || "-"}
                   </Text>
                   <Text size={10} color={getRoleColor(data?.role)} className="uppercase much-letter-spacing">
@@ -248,7 +274,7 @@ const ClanPlayerCard = ({ data }) => {
         <Card.Body css={{ padding: "6px 2px", margin: "0px", overflow: "hidden" }}>
           <Col>
             <Row>
-              <Grid.Container css={{ padding: "8px 20px" }} gap={1} justify="center" alignItems="center">
+              <Grid.Container css={{ padding: "8px 20px" }} gap={1}  justify="center">
                 {mainDetails.map((a, i) => {
                   return (
                     (a.url && a.text) ?
@@ -308,6 +334,7 @@ const ClanPlayerCard = ({ data }) => {
                       >
                         <div className={`${(fetchHeroLevel(a.id, a.village)) ? "" : "saturate-0"}`}>
                           <Avatar
+                            alt={a.id}
                             zoomed
                             borderWeight="light"
                             bordered
@@ -317,6 +344,7 @@ const ClanPlayerCard = ({ data }) => {
                         </div>
                       </Badge> : <div className={`${(fetchHeroLevel(a.id, a.village)) ? "" : "saturate-0"}`}>
                         <Avatar
+                          alt={a.id}
                           zoomed
                           borderWeight="light"
                           bordered
@@ -334,16 +362,17 @@ const ClanPlayerCard = ({ data }) => {
         </Card.Body>
         <Card.Divider />
         <Card.Footer css={{ backgroundImage: "linear-gradient(90deg, rgba(131,58,180,.4) 0%, rgba(252,132,69,.4) 50%, rgba(253,253,29,.4) 100%)", borderRadius: "1px", backdropFilter: "blur(12px)", padding: "5px 3px", margin: "0px" }}>
+          {buttonState ? <>
           <Row>
-            <Col align="center" css={{ margin: "0px 3px" }}><CopyToClipboard className="group" text={data?.tag || "null"}>
+            <Col align="center" css={{ margin: "0px 3px" }}>
               <Card
-                onPress={() => toast(`Copied "${data?.tag}" to clipboard`)}
+                onPress={handleRemovePlayer}
                 key={data.tag}
                 isPressable
                 css={{
                   maxWidth: "100%",
                   padding: "2px 0px",
-                  backgroundColor: { copyButton },
+                  backgroundColor: { teamButtonRemoveColor },
                   borderRadius: "8px",
                   backgroundColor: "rgba(43, 43, 43, 0.2)",
                   "&:hover": { backgroundColor: "rgba(175, 175, 175, 0.5)" }
@@ -351,30 +380,73 @@ const ClanPlayerCard = ({ data }) => {
 
                 variant="bordered"
               >
-                <div id="toaster" className="flex flex-row items-center justify-center px-2 gap-2"><LuCopy />
-                  <Text weight="normal" size={13}>{data?.tag || "-"}</Text></div>
+                <div id="toaster" className="flex flex-row items-center justify-center px-2 gap-2"><MdOutlineDeleteOutline/>
+                  <Text weight="normal" size={13}>Remove Player</Text></div>
               </Card>
-            </CopyToClipboard></Col>
+            </Col>
             <Col align="center" css={{ margin: "0px 3px" }}>
               <Card
-                onPress={handleSubmitPlayer}
+                onPress={handleAddPlayer}
                 isPressable
                 css={{
                   maxWidth: "100%",
                   padding: "2px 0px",
                   borderRadius: "8px",
-                  borderColor:"rgba(0, 255, 156, 0.4)",
+                  borderColor:{teamButtonAddColor},
                   backgroundColor: "rgba(0, 255, 156, 0.3)",
                   "&:hover": { backgroundColor: "rgba(0, 255, 156, 0.5)" }
                 }}
 
                 variant="bordered"
               >
-                <div className="flex flex-row items-center justify-center px-2 gap-2"><FiExternalLink />
-                  <Text weight="normal" size={13} className="">Visit Profile</Text></div>
+                <div className="flex flex-row items-center justify-center px-2 gap-2">{!isPlayerAlreadyAdded ? <AiOutlineUserAdd /> : <BiUserCheck />}
+                  <Text weight="normal" size={13} className="">{isPlayerAlreadyAdded ? "Added" : "Add Player"}</Text></div>
               </Card>
             </Col>
-          </Row>
+          </Row> </> :
+          <>
+          <Row>
+          <Col align="center" css={{ margin: "0px 3px" }}><CopyToClipboard className="group" text={data?.tag || "null"}>
+            <Card
+              onPress={() => toast(`Copied "${data?.tag}" to clipboard`)}
+              key={data.tag}
+              isPressable
+              css={{
+                maxWidth: "100%",
+                padding: "2px 0px",
+                backgroundColor: { copyButtonColor },
+                borderRadius: "8px",
+                backgroundColor: "rgba(43, 43, 43, 0.2)",
+                "&:hover": { backgroundColor: "rgba(175, 175, 175, 0.5)" }
+              }}
+
+              variant="bordered"
+            >
+              <div id="toaster" className="flex flex-row items-center justify-center px-2 gap-2"><LuCopy />
+                <Text weight="normal" size={13}>{data?.tag || "-"}</Text></div>
+            </Card>
+          </CopyToClipboard></Col>
+          <Col align="center" css={{ margin: "0px 3px" }}>
+            <Card
+              onPress={handleSubmitPlayer}
+              isPressable
+              css={{
+                maxWidth: "100%",
+                padding: "2px 0px",
+                borderRadius: "8px",
+                borderColor:"rgba(0, 255, 156, 0.4)",
+                backgroundColor: "rgba(0, 255, 156, 0.3)",
+                "&:hover": { backgroundColor: "rgba(0, 255, 156, 0.5)" }
+              }}
+
+              variant="bordered"
+            >
+              <div className="flex flex-row items-center justify-center px-2 gap-2"><FiExternalLink />
+                <Text weight="normal" size={13} className="">Visit Profile</Text></div>
+            </Card>
+          </Col>
+        </Row> </>
+          }
         </Card.Footer>
       </Card>
       </>

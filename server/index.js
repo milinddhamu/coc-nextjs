@@ -9,11 +9,11 @@ const port = process.env.PORT || 3000;
 app.prepare().then(() => {
   const server = express();
 
-  server.get('/clanDatabase/:clanInfo', async (req, res) => {
+  server.get('/api/clanDatabase/:clanInfo', async (req, res) => {
     const { clanInfo } = req.params;
     const options = {
       method: 'GET',
-      url: `https://api.clashofclans.com/v1/clans/%23${clanInfo}`,
+      url: `https://cocproxy.royaleapi.dev/v1/clans/%23${clanInfo}`,
       headers: {
         Authorization: `Bearer ${process.env.COC_API}`,
       },
@@ -28,7 +28,7 @@ app.prepare().then(() => {
       const playerDataPromises = memberTags.map(async (tag) => {
         const playerOptions = {
           method: 'GET',
-          url: `https://api.clashofclans.com/v1/players/%23${tag}`,
+          url: `https://cocproxy.royaleapi.dev/v1/players/%23${tag}`,
           headers: {
             Authorization: `Bearer ${process.env.COC_API}`,
           },
@@ -52,11 +52,11 @@ app.prepare().then(() => {
     }
   });
 
-  server.get('/playerDatabase/:playerInfo', async (req, res) => {
+  server.get('/api/playerDatabase/:playerInfo', async (req, res) => {
     const { playerInfo } = req.params;
     const apiUrls = [
-      `https://api.clashofclans.com/v1/players/%23${playerInfo}`,
-      `https://api.clashofclans.com/v1/goldpass/seasons/current`
+      `https://cocproxy.royaleapi.dev/v1/players/%23${playerInfo}`,
+      `https://cocproxy.royaleapi.dev/v1/goldpass/seasons/current`
     ];
   
     const axiosRequests = apiUrls.map(url => axios.get(url, {

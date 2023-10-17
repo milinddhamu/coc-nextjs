@@ -2,7 +2,7 @@
 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-#### Link - https://quiz-app-delta-six.vercel.app/
+#### Link - https://coc-nextjs.vercel.app/
 
 ## Table of Contents
 

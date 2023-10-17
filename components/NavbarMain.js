@@ -9,16 +9,43 @@ const NavbarMain = () => {
   const {data : session} = useSession()
   const router = useRouter()
   const collapseItems = [
-    "Home",
-    "Player",
-    "Pricing",
-    "Company",
-    "Legal",
-    "Team",
-    "Help & Feedback",
-    "Login",
-    "Sign Up",
-  ];
+    {
+      name: "Home",
+      link: "/"
+    },
+    {
+      name: "Player",
+      link: "/player"
+    },
+    {
+      name: "Pricing",
+      link: "/pricing"
+    },
+    {
+      name: "Company",
+      link: "/company"
+    },
+    {
+      name: "Legal",
+      link: "/legal"
+    },
+    {
+      name: "Team",
+      link: "/team"
+    },
+    {
+      name: "Help & Feedback",
+      link: "/help-feedback"
+    },
+    {
+      name: "Login",
+      link: "/login"
+    },
+    {
+      name: "Sign Up",
+      link: "/signup"
+    }
+  ];  
   
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
@@ -51,6 +78,7 @@ const NavbarMain = () => {
                   as="button"
                   color="secondary"
                   size="sm"
+                  alt="user image"
                   src={session?.user.image}
                 />
               </Dropdown.Trigger>
@@ -68,8 +96,8 @@ const NavbarMain = () => {
                   {session?.user.name}
                 </Text>
               </Dropdown.Item>
-              <Dropdown.Item key="settings" withDivider>
-                <Navbar.Link onClick={()=>router.push("/teams")}>My Teams</Navbar.Link>
+              <Dropdown.Item onClick={()=>router.push("/teams")} key="settings" withDivider>
+                My Teams
               </Dropdown.Item>
               <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
               <Dropdown.Item key="logout" withDivider color="error">
@@ -96,10 +124,10 @@ const NavbarMain = () => {
               color="inherit"
               css={{ minWidth: "100%",
               }}
-              href={`${'/auth/login'}`}
+              href={item.link}
             >
               <Text className="hover:underline-offset-1 hover:underline hover:translate-x-3 transition-all ease-in duration-900">
-                  {item}
+                  {item.name}
                 </Text>
             </Link>
           </Navbar.CollapseItem>

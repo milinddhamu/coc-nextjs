@@ -3,7 +3,7 @@ import { NextUIProvider, createTheme } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import * as React from 'react';
 import { SessionProvider } from "next-auth/react"
-
+import { RecoilRoot } from 'recoil';
 
 const lightTheme = createTheme({
   type: 'light',
@@ -56,10 +56,14 @@ const darkTheme = createTheme({
 })
 
 
-export default function App({ Component, pageProps,session }) {
+export default function App({ 
+  Component,
+  pageProps:{session , ...pageProps}
+  }){
 
   return (
     <SessionProvider session={session}>
+    <RecoilRoot>
     <NextThemesProvider
       defaultTheme="system"
       attribute="class"
@@ -69,12 +73,14 @@ export default function App({ Component, pageProps,session }) {
       }}
       >
       <NextUIProvider>
-      <> 
+      
         <Component {...pageProps} />
-        </>
+      
       </NextUIProvider>
     </NextThemesProvider>
+    </RecoilRoot>
     </SessionProvider>
+   
 
   )
 
