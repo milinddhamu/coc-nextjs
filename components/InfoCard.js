@@ -86,7 +86,7 @@ const InfoCard = ({ data }) => {
   };
   return (
         <>
-        <Container css={{margin:"0px",padding:"0px"}} className="border-x-[.5px] border-b-[.5px] border-gray-500/20 flex justify-center">
+        <Container css={{margin:"0px",padding:"0px"}} className="border-x-[.5px] border-gray-500/20 flex justify-center">
         <Card className='flex flex-col justify-center items-center border-none px-6 pb-5 md:px-8 max-w-5xl' css={{backgroundColor:"transparent",shadow:"none"}} >
           <span className='flex flex-col justify-center'>
             <div className=' flex flex-col justify-center items-center'>

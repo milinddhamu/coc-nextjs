@@ -65,7 +65,7 @@ const PlayerProfile = ({ allData }) => {
     <>
       <NavbarMain />
       <main className="pt-4">
-          <Grid.Container gap={1} display="flex"  justify="center">
+          <Grid.Container gap={0} display="flex"  justify="center">
             <Grid lg={3} xs={0} justify="center">
               <LeftSection aria-label="left section" townHall={playerData?.townHallLevel}  />
             </Grid>
