@@ -107,7 +107,7 @@ const ProfileMainDetails = ({ data }) => {
 
   return (
     <>
-      <div className='h-full w-full'>
+      <div className='w-full'>
         <Card
           css={{
             border: 'none',

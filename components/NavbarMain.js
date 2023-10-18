@@ -18,33 +18,17 @@ const NavbarMain = () => {
       link: "/player"
     },
     {
-      name: "Pricing",
-      link: "/pricing"
+      name: "My Teams",
+      link: "/teams"
     },
     {
-      name: "Company",
-      link: "/company"
+      name: "Log In",
+      link: "/auth/login"
     },
     {
-      name: "Legal",
-      link: "/legal"
+      name: "Sample Profile",
+      link: "/playerData/2LQUJU9YC"
     },
-    {
-      name: "Team",
-      link: "/team"
-    },
-    {
-      name: "Help & Feedback",
-      link: "/help-feedback"
-    },
-    {
-      name: "Login",
-      link: "/login"
-    },
-    {
-      name: "Sign Up",
-      link: "/signup"
-    }
   ];  
   
   const { setTheme } = useNextTheme();
@@ -56,14 +40,14 @@ const NavbarMain = () => {
           <Navbar.Toggle aria-label="toggle navigation" />
         </Navbar.Brand>
         <Navbar.Content enableCursorHighlight hideIn="xs">
-          <Navbar.Link onClick={()=> router.push("/playerData/2LQUJU9YC")}>My profile</Navbar.Link>
-          <Navbar.Link href="#">
-            Customers
+          <Navbar.Link href="/">
+            Home
           </Navbar.Link>
           <Navbar.Link href="/teams">My Teams</Navbar.Link>
           <Navbar.Link href="/player" css={{'&:focus': {
-              outlineColor: '$pink400',
-              },}}>Player/Clan</Navbar.Link>
+            outlineColor: '$pink400',
+          },}}>Player/Clan</Navbar.Link>
+          <Navbar.Link href="/playerData/2LQUJU9YC">Sample profile</Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
         <Navbar.Item>
@@ -126,7 +110,7 @@ const NavbarMain = () => {
               }}
               href={item.link}
             >
-              <Text className="hover:underline-offset-1 hover:underline hover:translate-x-3 transition-all ease-in duration-900">
+              <Text size={18} className="hover:underline-offset-1 hover:underline hover:translate-x-1 transition-all ease-in duration-900">
                   {item.name}
                 </Text>
             </Link>
