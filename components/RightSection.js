@@ -52,7 +52,7 @@ const RightSection = ({ data }) => {
   return (
     <>
    
-      <main className='flex flex-col mt-2 gap-4 px-3 md:px-2'>
+      <main className='flex flex-col gap-6 pb-6 px-6 md:px-3 border-b-[.5px] border-gray-500/20 sm:border-none'>
         <Card css={{ border: "none",borderRadius:"8px",margin:"0px",padding:"0px",shadow:"$lg" }} className="relative overflow-hidden flex max-w-5xl" >
           <Card.Header css={{ position: "absolute", zIndex: 1, top: 0 }}>
             <Col className="flex justify-center items-center">
