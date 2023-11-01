@@ -5,7 +5,6 @@ import CaraousalCard from "@/utils/CaraousalCard"
 import { Text } from "@nextui-org/react"
 
 const IndexCaraousal = ({data}) => {
-  const animation = { duration:15000, easing: (t) => t };
   const [sliderRef] = useKeenSlider({
     mode: "snap",
     loop: true,
@@ -22,19 +21,10 @@ const IndexCaraousal = ({data}) => {
       perView: 1,
       spacing: 30,
     },
-    created(s) {
-      s.moveToIdx(3, true, animation)
-    },
-    updated(s) {
-      s.moveToIdx(s.track.details.abs + 3, true, animation)
-    },
-    animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + 3, true, animation)
-    }
   })
 
   return (
-    <div ref={sliderRef} className="keen-slider bg-violet-400/30">
+    <div ref={sliderRef} className="keen-slider bg-violet-500/40">
       <div className="keen-slider__slide flex flex-col justify-start items-start p-24"> <Text weight="extrabold" size={72}  >Indian Rankings</Text>
       <Text weight="normal" size={26}>Players & Clan Rankings  	&#127942; </Text>
       <Text weight="normal" size={24}>Swipe to see..</Text></div>
