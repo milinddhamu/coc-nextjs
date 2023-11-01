@@ -2,13 +2,15 @@ import { Navbar, Button,Grid,Badge,Row,Col, Link,Spacer, Text, Card, Radio, Swit
 import { useTheme as useNextTheme } from 'next-themes'
 import { useTheme } from '@nextui-org/react'
 import "@theme-toggles/react/css/Classic.css"
-import { motion,AnimatePresence,useAnimation   } from "framer-motion";
+import { motion,AnimatePresence,useAnimation } from "framer-motion";
 import RevealText from "@/utils/RevealText";
 import { useState, useEffect } from "react";
 import NavbarMain from "@/components/NavbarMain";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { GoArrowUpRight } from "react-icons/go";
+import { AiFillGithub } from "react-icons/ai";
+import { FaXTwitter } from "react-icons/fa6";
 import {useRouter} from "next/router"
 import axios from "axios";
 import IndexCaraousal from "@/components/IndexCaraousal";
@@ -66,61 +68,13 @@ export default function Home({data}) {
       </div> :
         <>
           <NavbarMain />
-          <main className="relative transition-all max-h-screen">
-            <div className="pt-3 flex flex-row cursor-pointer" onClick={()=>router.push("/player")}>
-              <div className="flex flex-row min-w-fit px-2">
-              <Image 
-              src="/assets/others/Trophy.png"
-              alt="trophyIcon 1"
-              height={20}
-              width={25} 
-              />
-              <Spacer />
-              <Text weight="semibold" >Global</Text>
-              </div>
-              <Marquee gradient speed={35} direction="right" loop={0} autoFill gradientColor={gradientColorMarquee}>
-              <Text h2 b> Hello - 1248 trophies </Text>
-              <Text h2> Brother - 1000 trophies </Text>
-              <Text h2> asjdgb - 23423 trophies </Text>
+          <main className="relative transition-all">
+            <div className="flex flex-row cursor-pointer pt-2">
+              <Marquee gradient speed={80} direction="left" loop={0} autoFill gradientColor={gradientColorMarquee}>
+              <Text size={86} h1 weight="black" css={{lineHeight:"0.75",opacity:"0.7"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
               </Marquee>
             </div>
-            <div className="pt-3 flex flex-row">
-              <div className="flex flex-row min-w-fit px-2">
-              <Image 
-              src="/assets/others/Trophy.png"
-              alt="trophyIcon 2"
-              height={20}
-              width={25}
-              />
-              <Spacer />
-              <Text weight="semibold">Global</Text>
-              </div>
-              <Marquee gradient speed={20} loop={0} autoFill gradientColor={gradientColorMarquee}>
-              <Text h2 b> Hello - 1248 trophies </Text>
-              <Text h2> Brother - 1000 trophies </Text>
-              <Text h2> asjdgb - 23423 trophies </Text>
-              </Marquee>
-            </div>
-            <div className="pt-3 flex flex-row">
-              <div className="flex flex-row min-w-fit px-2">
-              <Image 
-              src="/assets/others/Trophy.png"
-              alt="trophyIcon 3"
-              height={20}
-              width={25}
-              />
-              <Spacer />
-              <Text weight="semibold">Global</Text>
-              </div>
-              <Marquee pauseOnHover gradient loop={0} autoFill gradientColor={gradientColorMarquee}>
-              <Text h2 b> Hello - 1248 trophies </Text>
-              <Text h2> Brother - 1000 trophies </Text>
-              <Text h2> asjdgb - 23423 trophies </Text>
-              </Marquee>
-            </div>
-
-
-            <section className="flex flex-col items-center justify-center pt-3">
+            <section className="flex flex-col items-center justify-center">
             <motion.div 
             initial={{
               opacity: 0,
@@ -138,7 +92,7 @@ export default function Home({data}) {
               scale: 1,
               filter: "blur(0px)",
             }}
-            className={`z-10 max-w-6xl gap-4 flex flex-col md:flex-row rounded-xl mx-4 p-6 backdrop-blur-[4px] ${isDark ? "bg-black/50" : "bg-white/50"} border-[0.5px] border-slate-400/30`}>
+            className={`z-10 max-w-6xl gap-4 flex flex-col md:flex-row rounded-3xl mx-4 p-6 backdrop-blur-[4px] ${isDark ? "bg-black/50" : "bg-white/50"} border-[0.5px] border-slate-400/30`}>
                 <Grid.Container>
                   <Grid>
                   <Text h2 weight="semibold" className="text-justify">Track and analyze your progress in Clash of Clans with ease. Simply enter your player tag or clan tag in the form below to retrieve valuable insights and statistics.</Text>
@@ -157,15 +111,15 @@ export default function Home({data}) {
                   </Grid>
                   <Grid xs={12} alignItems="center">
                     <Badge color="secondary" variant="dot" />
-                    <Text className="text-justify" css={{ ml: "$4" }}>Analyze your attack and defense strategies to enhance your gameplay.</Text>
+                    <Text className="text-justify" css={{ ml: "$4" }}>Analyze your attack and defense strategies to enhance your gameplay.<p className="text-violet-500 text-xs">coming soon ...</p></Text>
                   </Grid>
                   <Grid xs={12} alignItems="center">
                     <Badge color="success" variant="dot" />
-                    <Text className="text-justify" css={{ ml: "$4" }}>Keep track of your progress over time with historical data and trends.</Text>
+                    <Text className="text-justify" css={{ ml: "$4" }}>Keep track of your progress over time with historical data and trends.<p className="text-violet-500 text-xs">coming soon ...</p></Text>
                   </Grid>
                   <Grid xs={12} alignItems="center">
                     <Badge color="warning" variant="dot" />
-                    <Text className="text-justify" css={{ ml: "$4" }}>Compare your performance with other players and clans to stay competitive.</Text>
+                    <Text className="text-justify" css={{ ml: "$4" }}>Compare your performance with other players and clans to stay competitive.<p className="text-violet-500 text-xs">coming soon ...</p></Text>
                   </Grid>
                   <Spacer />
                   <Grid>
@@ -214,7 +168,29 @@ export default function Home({data}) {
             </section>
             <Spacer y={1}/>
             {data && 
-          <IndexCaraousal data={data} /> }
+          <IndexCaraousal data={data} />
+          }
+          <div className="flex flex-row w-full justify-center py-4 gap-2">
+            <Button
+              id="github"
+              auto
+              bordered
+              css={{borderWidth:"0.5px",borderColor:"#6b728050"}}
+              color="neutral"
+              icon={<AiFillGithub className="scale-125"/>}
+              onClick={()=> router.push("https://github.com/milinddhamu/coc-nextjs")}
+            />
+            <Button
+              id="twitter"
+              auto
+              bordered
+              css={{borderWidth:"0.5px",borderColor:"#6b728050"}}
+              color="neutral"
+              icon={<FaXTwitter className="scale-125"/>}
+              onClick={()=> router.push("https://github.com/milinddhamu/coc-nextjs")} >
+                @milind_dhamu
+            </Button>
+          </div>
           </main>
         </>}
 

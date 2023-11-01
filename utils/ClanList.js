@@ -131,7 +131,7 @@ const ClanList = ({data,buttonState}) => {
     <Card
         className="group relative transition-transform ease-in duration-200 "
         css={{
-          minWidth: "200px",
+          minWidth: "250px",
           maxWidth: "450px",
           borderRadius: "8px",
           borderWidth: ".5px",

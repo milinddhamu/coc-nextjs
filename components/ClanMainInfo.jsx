@@ -23,6 +23,8 @@ import { collection, addDoc,getDocs ,serverTimestamp,doc, deleteDoc,setDoc,array
 import { db } from "../firebase";
 import {useSession} from "next-auth/react";
 import { HiMenuAlt2 } from "react-icons/hi";
+import { Pagination } from '@nextui-org/react';
+
 
 const ClanMainInfo = ({allData}) => {
   const [firebaseUser , setFirebaseUser] = useState("");
@@ -50,10 +52,21 @@ const ClanMainInfo = ({allData}) => {
     return { ...item, ...matchingItem };
   });
   const [parent, enableAnimations] = useAutoAnimate({duration:500})
-  const [members , setMembers] = useState([])
+  const [members , setMembers] = useState(memberList);
+
+  // Pagination functions
+  const [currentPage, setCurrentPage] = useState(1);
+  const playersPerPage = 12;
+  const displayedMembers = members?.slice((currentPage - 1) * playersPerPage, (currentPage * playersPerPage));
+  const totalPageCount = Math.ceil(members?.length / playersPerPage);
+  const handlePaginationButton = (page) => {
+    setCurrentPage(page);
+    handleClickScrollTeam()
+  }
+  
+
   useEffect(()=>{
     getTeams();
-    setMembers(memberList)
     setTimeout(()=>setIsLoading(false),1500)
   },[])
   const roleOrder = {
@@ -233,7 +246,7 @@ const handleSubmit = async () => {
 };
   return (
     <>
-    <main id="scrollMain" className="flex flex-col justify-start items-center min-h-screen min-w-screen relative overflow-hidden">
+    <main id="scrollMain" className="flex flex-col justify-start items-center relative overflow-hidden">
     <NavbarMain />
     <section className="relative rounded-full animate-text ease-linear transition-all bg-gradient-to-l from-gray-200/10 via-gray-300/20 to-gray-400/20 px-4 flex flex-col sm:flex-row items-center justify-center min-h-30 mt-12 w-full max-w-2xl border-[.5px] border-gray-500/30 gap-2">
       <div className="relative">
@@ -244,14 +257,14 @@ const handleSubmit = async () => {
     containerCss={{borderRadius:"50% / 0% 0% 60% 60%",padding:"0px 6px"}}
     className="relative scale-125 sm:scale-150 min-w-1/3"
     src={data?.badgeUrls.medium}
-    alt="clan logo"
+    alt="badge"
     />
     </div>
     <Spacer />
     <div className="flex flex-col">
     <div className="flex flex-row justify-between items-center">
     <Text weight="extrabold" className="bg-gradient-radial from-slate-200 via-slate-600 to-slate-800 text-xl md:text-2xl xlg:text-3xl bg-clip-text text-transparent drop-shadow-lg antialiased animate-text transition-all ease-linear">
-    {data?.name || "dfsdfsdfsdfsdf"}
+    {data?.name || "-"}
     </Text>
     <div className="flex flex-row items-center relative">
                       
@@ -342,9 +355,9 @@ const handleSubmit = async () => {
        </div>
     </div>
   <div className="flex w-full justify-end px-8"><Text>Players:{data?.members || "-"}/50</Text></div>
-  <div ref={parent} id="membersScroll" className={`p-2 sm:p-4 grid items-center justify-center ${cardState ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"} ${"mb-72"}`}>
-    {members.map((a,i)=>
-      <div key={a?.tag} className="w-full h-full border-[.5px] p-2 sm:p-4 border-gray-500/20">
+  <div ref={parent} id="membersScroll" className={`w-full p-1 sm:p-2 grid items-center justify-center ${cardState ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}`}>
+    {displayedMembers.map((a,i)=>
+      <div key={a?.tag} className="flex justify-center w-full h-full border-[.5px] p-2 sm:p-4 border-gray-500/20">
       {cardState ? <ClanPlayerCard data={a} buttonState={createState}/> :
       <ClanList data={a} buttonState={createState}/> }
       </div>
@@ -382,10 +395,24 @@ const handleSubmit = async () => {
         <Text css={{opacity:"0.5"}}>Add Players from above...</Text></div>}
     </section> 
     }
+    <div className="mt-4 mb-6 ">
+      <Pagination
+        onlyDots
+        loop 
+        size="lg"
+        showControls
+        showShadow
+        color="warning"
+        page={currentPage}
+        total={totalPageCount}
+        onChange={handlePaginationButton}
+      />
+    </div>                
     <ToastContainer
       position="top-center"
       autoClose={2000}
       limit={2}
+      
       hideProgressBar={false}
       newestOnTop={true}
       closeOnClick
