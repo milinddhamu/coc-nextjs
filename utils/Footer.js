@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="flex flex-row w-full justify-center py-4 gap-2">
+    <div className="flex flex-row w-full justify-center p-6 gap-2">
         <Link href="https://github.com/milinddhamu/coc-nextjs">
             <Button
               id="github"

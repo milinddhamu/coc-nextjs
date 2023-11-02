@@ -15,6 +15,7 @@ import IndexCaraousal from "@/components/IndexCaraousal";
 import { useRecoilState } from 'recoil';
 import { userState } from "@/recoil/storage";
 import { useSession } from "next-auth/react";
+import Footer from "@/utils/Footer";
 
 export default function Home({data}) {
   const {data:session} = useSession;
@@ -168,6 +169,7 @@ export default function Home({data}) {
             {data && 
           <IndexCaraousal data={data} />
           }
+          <Footer />
           </main>
         </>}
 
