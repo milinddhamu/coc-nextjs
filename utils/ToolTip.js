@@ -32,7 +32,7 @@ const ToolTip = ({ a,level }) => {
         }}>
           <Text h6 b size={15}>{a.id}</Text>
           {a.superTroopLevel <= level ? <Text size={13} color="warning">{`Super ${a.id} - available !`}</Text> : a.superTroop ? <><Text size={13} color="warning">{`Unlock Super ${a.id} at Level ${a.superTroopLevel}`}</Text></> : <></>}
-          <Text css={{ color: "$accents7", fontWeight: "$hairline", fontSize: "$xs", textAlign: "justify", letterSpacing: "-0.05em", lineHeight: "1", }} >
+          <Text css={{ color: "$accents7", fontWeight: "$normal", fontSize: "$xs", textAlign: "justify", lineHeight: "1", }} >
             {a.des}
           </Text>
 

@@ -6,7 +6,7 @@ const LeftSection = ({townHall}) => {
   const {isDark} = useTheme();
   return (
     <>
-      <main className='flex flex-grow flex-col px-6 md:px-3 gap-2'>
+      <main className='flex flex-grow flex-col p-6 md:p-3 gap-2'>
         <div className="flex flex-col">
         <Text b>Curated Links for you</Text>
       <Spacer y={.5}/>

@@ -14,7 +14,7 @@ const NavbarMain = () => {
       link: "/"
     },
     {
-      name: "Player",
+      name: "Search clan/player",
       link: "/player"
     },
     {
@@ -30,9 +30,12 @@ const NavbarMain = () => {
       link: "/playerData/2LQUJU9YC"
     },
   ];  
-  
+  const filteredCollapseItems = session?.user
+  ? collapseItems.filter(item => item.name !== "Log In")
+  : collapseItems;
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
+  console.log(session?.user)
   return (
     <Navbar shouldHideOnScroll isBordered variant="floating" height={54} css={{paddingTop:"8px"}} 
     >
@@ -70,24 +73,30 @@ const NavbarMain = () => {
             <Dropdown.Menu
               aria-label="User menu actions"
               color="secondary"
-              
+              className="borderGray500"
             >
-              <Dropdown.Item key="profile" css={{ height: "$18" }}>
-                <Text b color="inherit" css={{ d: "flex" }}>
-                  Signed in as
+              <Dropdown.Item key="profile" css={{ height: "$18" }} className="outline-none">
+                <Text size={12}  color="inherit" css={{ d: "flex" }}>
+                  Signed in as :
                 </Text>
-                <Text color="inherit" css={{ d: "flex" }}>
+                <Text weight="semibold" color="inherit" css={{ d: "flex" }}>
                   {session?.user.name}
                 </Text>
               </Dropdown.Item>
-              <Dropdown.Item onClick={()=>router.push("/teams")} key="settings" withDivider>
+              <Dropdown.Item key="settings" withDivider className="outline-none">
+                <Button auto flat color="secondary" onClick={()=>router.push("/teams")}>
                 My Teams
+              </Button>
               </Dropdown.Item>
-              <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
-              <Dropdown.Item key="logout" withDivider color="error">
+              <Dropdown.Item key="team_settings" className="outline-none">
+              <Button disabled auto flat color="secondary" onClick={()=>router.push("/teams")}>
+                Team Settings (upcoming...)
+              </Button>
+              </Dropdown.Item>
+              <Dropdown.Item key="logout" withDivider color="error" className="outline-none">
               <Button auto flat color="error" onClick={()=> signOut()}>
               Sign Out
-                </Button>
+              </Button>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>}
@@ -102,7 +111,7 @@ const NavbarMain = () => {
           </Navbar.Item>
         </Navbar.Content>
         <Navbar.Collapse  aria-label="Collapse main"  className="nav-content px-4 max-w-xs top-8 transition-all ease-in duration-300" >
-        {collapseItems.map((item, index) => (
+        {filteredCollapseItems.map((item, index) => (
           <Navbar.CollapseItem key={item} activeColor="warning" >
             <Link
               color="inherit"

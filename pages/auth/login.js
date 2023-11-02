@@ -44,18 +44,19 @@ const login = ({providers}) => {
         </div>
         <Text weight="extrabold" size={72} color="white" className="z-10 m-4 text-center">Log In</Text>
         </div>
-        <div className="flex flex-col items-center justify-center gap-9 bg-gradient-to-b from-purple-700  to-black min-h-screen w-full">
+        <div className="flex flex-col items-center justify-center gap-9 bg-gradient-to-b from-purple-700  to-[#1b1124] min-h-screen w-full">
         <Input labelPlaceholder="Email" onChange={(e)=> setEmail(e.target.value)} css={{minWidth:"260px"}}/>
         <Input.Password labelPlaceholder="Password" onChange={(e)=> setPassword(e.target.value)} css={{minWidth:"260px"}}/>
         <Button color="secondary" flat className="bg-violet-600/60 hover:bg-violet-800/70">Log in</Button>
         <Divider className="max-w-sm"/>
         <div key={"google"}>
           {(!googleButton) ? <Button color="secondary" flat className="bg-violet-600/60 hover:bg-violet-800/70" onClick={() => signIn("google" , { callbackUrl: '/' }) && setGoogleButton(true)}>
-            Sign in with Google <AiOutlineGoogle className="scale-125 text-center mx-2 mt-[.5]" />
+          Sign in with Google <AiOutlineGoogle className="text-xl ml-2 mt-[2px]" />
           </Button> : <Button disabled color="secondary" bordered >
           <Loading type="spinner" color="currentColor" size="sm" />
           </Button> }
         </div>
+        <Text size={12} weight="light">*Currently only Google Authentication is working</Text>
         </div>
       </section>
       </>

@@ -109,3 +109,7 @@ div[data-state="open"].open-collapse {
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
 }
+
+.borderGray500 > ul {
+  border-color: #6b728050 !important; /* Change the border color as needed */
+}
