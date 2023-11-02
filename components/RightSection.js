@@ -1,7 +1,7 @@
 import { Card, Col, Text, Container, Spacer,Avatar } from "@nextui-org/react";
 import Image from "next/image";
 import { parseISO, format } from 'date-fns';
-import augustCal from '@/public/assets/others/july-2023-calendar.jpg'
+import Calendar from '@/public/assets/others/Calendar.jpg'
 import Countdown from "react-countdown";
 import TraderRefresh from "@/utils/countDownTimer/TraderRefresh"
 import RaidWeekend from "@/utils/countDownTimer/RaidWeekend"
@@ -192,10 +192,10 @@ const RightSection = ({ data }) => {
         <Card css={{
           border: "none",
           borderRadius:"8px"
-        }} className="flex flex-col items-center min-h-80 max-h-96 w-full overflow-scroll cursor-pointer scrollbar-none" >
+        }} className="flex flex-col items-center w-full overflow-scroll cursor-pointer scrollbar-none" >
           <Image
-            src={augustCal}
-            alt="august cal"
+            src={Calendar}
+            alt="Calendar"
           />
         </Card>
       </main>

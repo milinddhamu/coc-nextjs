@@ -9,14 +9,13 @@ import NavbarMain from "@/components/NavbarMain";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { GoArrowUpRight } from "react-icons/go";
-import { AiFillGithub } from "react-icons/ai";
-import { FaXTwitter } from "react-icons/fa6";
 import {useRouter} from "next/router"
 import axios from "axios";
 import IndexCaraousal from "@/components/IndexCaraousal";
 import { useRecoilState } from 'recoil';
 import { userState } from "@/recoil/storage";
 import { useSession } from "next-auth/react";
+import Footer from "@/utils/Footer";
 
 export default function Home({data}) {
   const {data:session} = useSession;
@@ -71,7 +70,7 @@ export default function Home({data}) {
           <main className="relative transition-all">
             <div className="flex flex-row cursor-pointer pt-2">
               <Marquee gradient speed={80} direction="left" loop={0} autoFill gradientColor={gradientColorMarquee}>
-              <Text size={86} h1 weight="black" css={{lineHeight:"0.75",opacity:"0.7"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
+              <Text size={86} h1 weight="black" css={{lineHeight:"0.75",opacity:"0.2"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
               </Marquee>
             </div>
             <section className="flex flex-col items-center justify-center">
@@ -156,8 +155,8 @@ export default function Home({data}) {
                     </div>
                     </Grid>
                   <Grid xs={12} alignItems="end" justify="flex-end" className="overflow-hidden">
-                  <Button shadow color="secondary" className="bg-gradient-to-tr from-violet-800 via-violet-600 to-yellow-200 animate-text m-2 w-full" auto onPress={()=> router.push("/player")}>
-                  <Text weight="hairline">Search Player/Clan</Text>
+                  <Button color="secondary" className="bg-gradient-to-tr from-violet-800 via-violet-600 to-yellow-200 animate-text m-2 w-full" auto onPress={()=> router.push("/player")}>
+                  <Text weight="light">Search Player/Clan</Text>
                   </Button>
                   </Grid>
                 </Grid.Container>
@@ -170,27 +169,7 @@ export default function Home({data}) {
             {data && 
           <IndexCaraousal data={data} />
           }
-          <div className="flex flex-row w-full justify-center py-4 gap-2">
-            <Button
-              id="github"
-              auto
-              bordered
-              css={{borderWidth:"0.5px",borderColor:"#6b728050"}}
-              color="neutral"
-              icon={<AiFillGithub className="scale-125"/>}
-              onClick={()=> router.push("https://github.com/milinddhamu/coc-nextjs")}
-            />
-            <Button
-              id="twitter"
-              auto
-              bordered
-              css={{borderWidth:"0.5px",borderColor:"#6b728050"}}
-              color="neutral"
-              icon={<FaXTwitter className="scale-125"/>}
-              onClick={()=> router.push("https://github.com/milinddhamu/coc-nextjs")} >
-                @milind_dhamu
-            </Button>
-          </div>
+          <Footer />
           </main>
         </>}
 

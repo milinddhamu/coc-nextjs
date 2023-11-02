@@ -1,6 +1,6 @@
 import { Card, Progress, Text, Spacer } from "@nextui-org/react";
 
-const ProfileProgress = ({ data,position }) => {
+const ProfileProgress = ({ data, position }) => {
   const textSize = position === "player" && 15 || position === "clan" && 11;
   const maxWidthText = position === "player" && 90 || position === "clan" && 60;
   const paddingWise = position === "player" && 4 || position === "clan" && 0;
@@ -22,25 +22,32 @@ const ProfileProgress = ({ data,position }) => {
 
   return (
     <>
-      <main className={`p-${paddingWise}`}>
-           <div  className={`flex gap-2 ${position === "clan" ? "" : "flex-col"} sm:flex-row justify-start items-center`}>
-            <Text css={{ minWidth: `${maxWidthText}px`, textAlign: "center" }} weight="semibold" size={textSize}>Troops</Text>
-            <Progress squared shadow value={troopsPercent || 40 } color="secondary" status="secondary">
-              <Text h6 weight="semibold" size={10} className="flex justify-center">{troopsPercent || "null"}{" "}%</Text></Progress></div>
-            <Spacer y={.5}/>
-            <div  className={`flex gap-2 justify-start items-center ${position === "clan" ? "" : "flex-col"} sm:flex-row`}>
-              <Text css={{ minWidth: `${maxWidthText}px`, textAlign: "center" }} weight="semibold" size={textSize}>Heroes</Text>
-              <Progress squared shadow value={heroesPercent || 50 } color="warning" status="warning"><Text h6 weight="semibold" size={10} className="flex justify-center">{heroesPercent || "null"}{" "}%</Text></Progress></div>
-            <Spacer y={.5}/>
-            <div className={`flex gap-2 justify-start items-center ${position === "clan" ? "" : "flex-col"} sm:flex-row`}>
-            <Text css={{ minWidth: `${maxWidthText}px`, textAlign: "center" }} weight="semibold" size={textSize}>Spells</Text>
-            <Progress squared shadow value={spellsPercent || 70} color="success" status="success">
-              <Text h6 weight="semibold" size={10} className="flex justify-center">{spellsPercent || "null"}{" "}%</Text></Progress></div>
-            <Spacer y={.5}/>
-            <div  className={`flex gap-2 justify-start items-center ${position === "clan" ? "" : "flex-col"} sm:flex-row`}>
-              <Text css={{ minWidth: `${maxWidthText}px`, textAlign: "center" }} weight="semibold" size={textSize}>Achievements</Text>
-              <Progress squared css={{}} value={achievementsPercent || 60} color="error" status="error">
-              <Text h6 weight="semibold" size={10} className="flex justify-center">{achievementsPercent || "null"}{" "}%</Text></Progress></div>
+      <main className={`px-${paddingWise}`}>
+        <div className={`flex gap-4 ${position === "clan" ? "" : "flex-row"} justify-start items-center`}>
+          <Progress squared shadow value={troopsPercent || 40} color="secondary" status="secondary" css={{position:"relative"}} >
+            <Text h6 weight="semibold" size={10} className="absolute flex justify-center min-w-full">{troopsPercent || "null"}{" "}%</Text>
+          </Progress>
+          <Text css={{ minWidth: `${maxWidthText}px`, textAlign: "center" }} weight="semibold" size={textSize}>Troops</Text>
+          </div>
+        <Spacer y={.5} />
+        <div className={`flex gap-4 justify-start items-center ${position === "clan" ? "" : "flex-row"} sm:flex-row`}>
+          <Progress squared shadow value={heroesPercent || 50} color="warning" status="warning" css={{position:"relative"}}>
+            <Text h6 weight="semibold" size={10} className="absolute min-w-full flex justify-center">{heroesPercent || "null"}{" "}%</Text>
+          </Progress>
+          <Text css={{ minWidth: `${maxWidthText}px`, textAlign: "center" }} weight="semibold" size={textSize}>Heroes</Text>
+          </div>
+        <Spacer y={.5} />
+        <div className={`flex gap-4 justify-start items-center ${position === "clan" ? "" : "flex-row"} sm:flex-row`}>
+          <Progress squared shadow value={spellsPercent || 70} color="success" status="success" css={{position:"relative"}}>
+            <Text h6 weight="semibold" size={10} className="absolute min-w-full flex justify-center">{spellsPercent || "null"}{" "}%</Text></Progress>
+          <Text css={{ minWidth: `${maxWidthText}px`, textAlign: "center" }} weight="semibold" size={textSize}>Spells</Text>
+            </div>
+        <Spacer y={.5} />
+        <div className={`flex gap-4 justify-start items-center ${position === "clan" ? "" : "flex-row"} sm:flex-row`}>
+          <Progress squared value={achievementsPercent || 60} color="error" status="error" css={{position:"relative"}}>
+            <Text h6 weight="semibold" size={10} className="absolute min-w-full flex justify-center">{achievementsPercent || "null"}{" "}%</Text></Progress>
+          <Text css={{ minWidth: `${maxWidthText}px`, textAlign: "center" }} weight="semibold" size={textSize}>Achievements</Text>
+          </div>
       </main>
     </>
   );
