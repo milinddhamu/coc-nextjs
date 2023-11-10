@@ -62,7 +62,7 @@ const Achievements = ({ data }) => {
         <Collapse.Group shadow css={{
           maxHeight: '600px',
           shadow: "$lg",
-          borderRadius: "8px"
+          borderRadius: "20px"
         }} className='scrollbar-hide relative scrollbar-thin overflow-auto overflow-y-scroll min-w-full'>
           <Collapse id="achievementsScroll" title='Achievements' className="open-collapse min-w-full" arrowIcon={<PiSword />}>
             <table className="table-auto min-w-full">
@@ -72,7 +72,7 @@ const Achievements = ({ data }) => {
                   <th className="text-center">
                     <Dropdown key="value">
                       <Dropdown.Button flat color="warning"><Text size={16} weight="extrabold">Value</Text></Dropdown.Button>
-                      <Dropdown.Menu variant="shadow" color="warning">
+                      <Dropdown.Menu variant="flat" color="warning">
                         <Dropdown.Item key="sort button value 1">
                           <button onClick={() => handleSort('value', true)}>Sort Ascending - Value</button>
                         </Dropdown.Item>
@@ -88,7 +88,7 @@ const Achievements = ({ data }) => {
                   <th className="text-center">
                     <Dropdown key="stars">
                       <Dropdown.Button flat color="warning"><Text size={16} weight="extrabold">Stars</Text></Dropdown.Button>
-                      <Dropdown.Menu variant="shadow" color="warning">
+                      <Dropdown.Menu variant="flat" color="warning">
                         <Dropdown.Item key="sort button stars 1">
                           <button onClick={() => handleSort('stars', true)}>Sort Ascending - Stars</button>
                         </Dropdown.Item>
@@ -128,9 +128,9 @@ const Achievements = ({ data }) => {
               className="sticky bottom-0 shadow-none w-full group"
               auto
               onClick={handleClickScroll}
-              icon={<ChevronUp set="bold" primaryColor="grey" />}
+              icon={<ChevronUp set="bold" primaryColor="orange" />}
             >
-              <Text size={10} weight="semibold" color="primary" className="opacity-60 group-hover:opacity-100">
+              <Text size={12} weight="semibold" color="neutral" className="opacity-60 group-hover:opacity-100">
                 SCROLL BACK TO TOP
               </Text>
             </Button>

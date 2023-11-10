@@ -41,14 +41,18 @@ const CommentsCard = ({ data ,onChange}) => {
   }
 
   return (
-    <Card css={{ borderRadius: "10px" }} className="border-[.5px] border-gray-500/20 ">
+    <Card css={{ borderRadius: "12px" }} className="border-[.5px] border-gray-500/20">
       <div className="flex flex-col px-4 pb-3 pt-2 w-full">
         <div className="w-full flex flex-row justify-between opacity-80">
           <Text size={12}>{data.authorName}</Text>
           <Text size={12}>{formattedDate}</Text>
         </div>
         <div className={`text-justify flex flex-row w-full items-baseline ${!editable && 'transparentBg'}`}>
-          <Input fullWidth id="comment" readOnly={!editable} css={{ backgroundColor: "none" }} initialValue={commentText} onChange={(e)=>setCommentText(e.target.value)} />
+          <Input fullWidth id="comment" readOnly={!editable}
+          shadow={false}
+           
+          style={{color:"none"}}
+          initialValue={commentText} onChange={(e)=>setCommentText(e.target.value)} />
           {session?.user.email === data.authorEmail &&
             <div className="flex gap-1">
               {!editable ?

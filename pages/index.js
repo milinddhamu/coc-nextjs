@@ -5,8 +5,6 @@ import "@theme-toggles/react/css/Classic.css"
 import { motion,AnimatePresence,useAnimation } from "framer-motion";
 import RevealText from "@/utils/RevealText";
 import { useState, useEffect } from "react";
-import NavbarMain from "@/components/NavbarMain";
-import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { GoArrowUpRight } from "react-icons/go";
 import {useRouter} from "next/router"
@@ -66,11 +64,10 @@ export default function Home({data}) {
         </div>
       </div> :
         <>
-          <NavbarMain />
           <main className="relative transition-all">
-            <div className="flex flex-row cursor-pointer pt-2">
+            <div className="flex flex-row cursor-pointer -mt-2">
               <Marquee gradient speed={80} direction="left" loop={0} autoFill gradientColor={gradientColorMarquee}>
-              <Text size={86} h1 weight="black" css={{lineHeight:"0.75",opacity:"0.2"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
+              <Text size={86} h1 weight="black" css={{lineHeight:"0.75",opacity:"0.4"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
               </Marquee>
             </div>
             <section className="flex flex-col items-center justify-center">

@@ -5,17 +5,15 @@ import { useTheme as useNextTheme } from 'next-themes'
 import { useTheme } from '@nextui-org/react'
 import RightSection from "./RightSection";
 import LeftSection from "./LeftSection";
-import cocLogo from '/public/assets/others/cocLogo.png'
-import { Lightbulb } from '@theme-toggles/react';
 import "@theme-toggles/react/css/Lightbulb.css"
-import NavbarMain from '@/components/NavbarMain';
 
 
 const PlayerProfile = ({ allData }) => {
   const { setTheme } = useNextTheme();
   const { isDark, type } = useTheme();
   const playerData = allData[0];
-  const passData = allData[1]
+  const passData = allData[1];
+  console.log(allData)
   const backgroundPng = [
     {
       key: "1",
@@ -63,8 +61,7 @@ const PlayerProfile = ({ allData }) => {
   ];
   return (
     <>
-      <NavbarMain />
-      <main className="pt-4">
+      <main className="pt-10">
           <Grid.Container gap={0} display="flex"  justify="center">
             <Grid lg={3} xs={0} justify="center">
               <LeftSection aria-label="left section" townHall={playerData?.townHallLevel}  />

@@ -62,7 +62,7 @@ const Comments = ({playerTag}) => {
   };
 
   return (
-    <Card css={{borderRadius:"8px",border:"none"}}>
+    <Card css={{borderRadius:"20px",border:"none"}}>
       <Card.Header css={{padding:"14px 20px"}}>
         <Text>Comments</Text>
       </Card.Header>

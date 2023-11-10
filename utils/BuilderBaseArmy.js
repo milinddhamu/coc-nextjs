@@ -55,7 +55,7 @@ const BuilderBaseArmy = ({ data }) => {
   return (
     <>
       <main className='flex flex-col justify-center items-center gap-4 '>
-        <Collapse.Group shadow css={{borderRadius:"8px",shadow:"$lg",minWidth:"100%"}}>
+        <Collapse.Group shadow css={{borderRadius:"20px",shadow:"$lg",minWidth:"100%"}}>
           <Collapse className="open-collapse" aria-label="builder army" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/SneakyArcher.png"} height={35} width={35} alt="SneakyArcher" /><Spacer x={.5}/><Text weight="bold" size={12} >Troops</Text></main>} expanded arrowIcon={<PiSword />}>
             <Grid.Container gap={1} className='flex justify-center h-full w-full'>
               {builderArmy.map((a, i) => {

@@ -25,8 +25,8 @@ const login = ({providers}) => {
   }
   return (
     <>
-      <section className="flex flex-col md:flex-row min-h-screen min-w-screen">
-        <div className="flex items-center justify-center md:min-h-screen w-full relative overflow-hidden">
+      <section className="flex flex-col md:flex-row w-full h-screen -mt-4 sm:-mt-10">
+        <div className="flex items-center justify-center w-full relative overflow-hidden">
         <div className='absolute flex h-full w-full'>
         <Image
               onLoadingComplete={() => setLoading(false)}
@@ -42,9 +42,9 @@ const login = ({providers}) => {
                 })`}
             />
         </div>
-        <Text weight="extrabold" size={72} color="white" className="z-10 m-4 text-center">Log In</Text>
+        <Text weight="extrabold" size={72} color="white" className="z-10 text-center p-20">Log In</Text>
         </div>
-        <div className="flex flex-col items-center justify-center gap-9 bg-gradient-to-b from-purple-700  to-[#1b1124] min-h-screen w-full">
+        <div className="flex flex-col items-center justify-center gap-9 bg-gradient-to-b from-purple-700  to-[#1b1124] h-full w-full">
         <Input labelPlaceholder="Email" onChange={(e)=> setEmail(e.target.value)} css={{minWidth:"260px"}}/>
         <Input.Password labelPlaceholder="Password" onChange={(e)=> setPassword(e.target.value)} css={{minWidth:"260px"}}/>
         <Button color="secondary" flat className="bg-violet-600/60 hover:bg-violet-800/70">Log in</Button>

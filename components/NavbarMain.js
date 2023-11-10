@@ -5,6 +5,8 @@ import { useTheme as useNextTheme } from 'next-themes'
 import { useTheme } from '@nextui-org/react'
 import { useRouter } from "next/router";
 import { useSession,signIn,signOut } from "next-auth/react";
+
+
 const NavbarMain = () => {
   const {data : session} = useSession()
   const router = useRouter()

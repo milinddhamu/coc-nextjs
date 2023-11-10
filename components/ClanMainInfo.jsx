@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useTheme } from '@nextui-org/react';
 import CopyToClipboard from "react-copy-to-clipboard";
 import { LuCopy } from "react-icons/lu";
-import NavbarMain from "@/components/NavbarMain";
 import {motion, useScroll, useTransform } from 'framer-motion';
 import { ClanWarLeague } from "@/utils/Data/ClanWarLeague";
 BsViewList
@@ -247,7 +246,6 @@ const handleSubmit = async () => {
   return (
     <>
     <main id="scrollMain" className="flex flex-col justify-start items-center relative overflow-hidden">
-    <NavbarMain />
     <section className="relative rounded-full animate-text ease-linear transition-all bg-gradient-to-l from-gray-200/10 via-gray-300/20 to-gray-400/20 px-4 flex flex-col sm:flex-row items-center justify-center min-h-30 mt-12 w-full max-w-2xl border-[.5px] border-gray-500/30 gap-2">
       <div className="relative">
       <div className={`h-full w-full ${isDark ? "bg-white" : "bg-violet-600"} rounded-full scale-75 blur-3xl absolute`}></div>

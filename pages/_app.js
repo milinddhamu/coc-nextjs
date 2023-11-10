@@ -4,6 +4,7 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import * as React from 'react';
 import { SessionProvider } from "next-auth/react"
 import { RecoilRoot } from 'recoil';
+import NavbarMain from "@/components/NavbarMain";
 
 const lightTheme = createTheme({
   type: 'light',
@@ -73,9 +74,8 @@ export default function App({
       }}
       >
       <NextUIProvider>
-      
+        <NavbarMain />
         <Component {...pageProps} />
-      
       </NextUIProvider>
     </NextThemesProvider>
     </RecoilRoot>

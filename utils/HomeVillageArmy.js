@@ -93,7 +93,7 @@ const HomeVillageArmy = ({ data }) => {
   return (
     <>
       <main className='flex flex-col justify-center items-center gap-4'>
-        <Collapse.Group shadow css={{ borderRadius: "8px", shadow: "$lg",minWidth:"100%",gap:"0px" }}>
+        <Collapse.Group shadow css={{ borderRadius: "20px", shadow: "$lg",minWidth:"100%",gap:"0px" }}>
           <Collapse aria-label="army" className="open-collapse" title={<main className="flex flex-row justify-start items-center">
             <Image src={"/assets/icons/SuperBarbarian.png"} height={35} width={35} alt="super barbarian" />
             <Spacer x={.5} />
