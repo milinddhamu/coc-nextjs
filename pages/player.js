@@ -7,7 +7,6 @@ import { useTheme } from '@nextui-org/react'
 import { Classic, Lightbulb } from '@theme-toggles/react';
 import "@theme-toggles/react/css/Lightbulb.css"
 import { useState, useEffect } from 'react';
-import NavbarMain from '@/components/NavbarMain';
 
 const player = () => {
   const [isToggled, setToggle] = useState(false)
@@ -18,9 +17,7 @@ const player = () => {
 
   return (
     <>
-      <main className='relative flex flex-col min-w-screen min-h-screen overflow-hidden top-0'>
-      <NavbarMain />
-        <div className='absolute flex h-screen w-screen'>
+        <div className='absolute flex h-screen w-screen top-0'>
         <Image
               onLoadingComplete={() => setIsLoading(false)}
               src={backGround}
@@ -34,6 +31,7 @@ const player = () => {
                 })`}
             />
         </div>
+      <main className='relative flex flex-col'>
         <div className='flex flex-col min-h-screen w-screen justify-center items-center overflow-hidden'>
           <InputForm />
         </div>

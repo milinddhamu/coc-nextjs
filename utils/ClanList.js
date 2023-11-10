@@ -133,7 +133,7 @@ const ClanList = ({data,buttonState}) => {
         css={{
           minWidth: "250px",
           maxWidth: "450px",
-          borderRadius: "8px",
+          borderRadius: "12px",
           borderWidth: ".5px",
           borderColor: "rgba(107, 114, 110, 0.5)",
         

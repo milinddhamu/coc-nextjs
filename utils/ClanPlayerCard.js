@@ -201,14 +201,11 @@ const ClanPlayerCard = ({ data,buttonState }) => {
         css={{
           minWidth: "200px",
           maxWidth: "450px",
-          borderRadius: "8px",
+          borderRadius: "12px",
           borderWidth: ".5px",
           borderColor: "rgba(107, 114, 110, 0.5)",
         
         }}>{/*error here inside opacity and group */}
-          <motion.div
-          className="pointer-events-none absolute opacity-10 group-hover:opacity-100 transition-all ease-in duration-300" style={{ 
-            background: useMotionTemplate`radial-gradient(450px circle at ${mouseX}px ${mouseY}px, ${shadowColor},transparent 80%)` , borderRadius:"8px",inset:"-1px"}}/>
         <Card.Header className="w-full" css={{ padding: "0px 4px 4px 4px", margin: "0px" }}>
           <Row>
             <Col>
@@ -448,6 +445,14 @@ const ClanPlayerCard = ({ data,buttonState }) => {
         </Row> </>
           }
         </Card.Footer>
+
+        {/* Background interactive shadow*/}
+
+        <motion.div
+          className="pointer-events-none absolute opacity-20 group-hover:opacity-30 transition-all ease-in duration-300" style={{ 
+            background: useMotionTemplate`radial-gradient(450px circle at ${mouseX}px ${mouseY}px, ${shadowColor},transparent 80%)` , borderRadius:"8px",inset:"-1px",zIndex:"-10"}}/>
+
+
       </Card>
       </>
   );

@@ -3,7 +3,6 @@ import { useSession } from "next-auth/react";
 import { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, serverTimestamp, doc, deleteDoc, setDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../firebase"
-import NavbarMain from "@/components/NavbarMain";
 import { useRouter } from "next/router";
 import { MdDeleteOutline, MdOutlineModeEditOutline, MdOutlineDone } from "react-icons/md";
 
@@ -67,7 +66,6 @@ const teams = () => {
   if(!session){
     return (
       <>
-      <NavbarMain />
       <div className="flex min-h-screen min-w-screen items-center justify-center"><Text size={20}>Please <Link href="/auth/login" underline color="secondary">
             Sign In
           </Link> to Continue</Text>
@@ -79,7 +77,6 @@ const teams = () => {
   return (
     <>
       <main className="flex flex-col min-w-screen items-center">
-        <NavbarMain />
         {(teamList?.length === 0) ? 
       (
       <div className="flex min-h-screen min-w-screen items-center"><Text size={20}>Visit your <Link underline href="/player" color="secondary">

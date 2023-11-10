@@ -52,7 +52,7 @@ const InputForm = () => {
         pauseOnHover
         theme="dark"
       />
-      <span className="flex flex-col bg-black/40 backdrop-blur-lg rounded-xl drop-shadow-lg items-center p-6">
+      <span className="flex flex-col bg-black/40 backdrop-blur-lg rounded-3xl drop-shadow-lg items-center p-6">
         <Text
           h1
           shadow='primary'
@@ -74,7 +74,7 @@ const InputForm = () => {
             <Switch
               bordered
               size='lg'
-              shadow
+              flat="true"
               color="warning" checked={toggle}
               iconOn={<User set="bold" primaryColor={isDark ? "white" : "black"} />}
               iconOff={<People set="bold" primaryColor="#F5A524" />}

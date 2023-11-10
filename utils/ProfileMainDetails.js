@@ -112,7 +112,7 @@ const ProfileMainDetails = ({ data }) => {
           css={{
             border: 'none',
             shadow:"$lg",
-            borderRadius:"8px",
+            borderRadius:"20px",
             padding:"0px",
             margin:"0px"
           }}

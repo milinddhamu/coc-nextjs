@@ -86,7 +86,6 @@
 
 div[data-state="open"].open-collapse {
   color: orange !important;
-  padding:10px 0px 0px 0px;
 }
 
 .much-letter-spacing {

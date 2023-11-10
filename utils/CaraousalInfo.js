@@ -18,23 +18,23 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
     };
 
     switch (endpoint) {
-      case 'Player Rankings':
+      case 'players':
         data.image = allData?.league.iconUrls.tiny;
         data.trophies = allData?.trophies;
         break;
-      case 'Player Rankings Versus':
+      case 'players-versus':
         data.image = "/assets/Builder_Base_Diamond_League_1.png";
         data.trophies = allData?.builderBaseTrophies;
         break;
-      case 'Clan Rankings':
+      case 'clans':
         data.image = allData?.badgeUrls.small;
         data.trophies = allData?.clanPoints;
         break;
-      case 'Clan Rankings Versus':
+      case 'clans-versus':
         data.image = allData?.badgeUrls.small;
         data.trophies = allData?.clanVersusPoints;
         break;
-      case 'Clan Capital Rankings':
+      case 'capitals':
         data.image = allData?.badgeUrls.small;
         data.trophies = allData?.clanCapitalPoints;
         break;
@@ -51,13 +51,12 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
   const endpointData = getDataByEndpoint(endpoint);
 
   const handleVisitSubmit = () => {
-    (endpoint === "Player Rankings" || endpoint === "Player Rankings Versus") ? (router.push(`/playerData/${tag}`)) : (router.push(`/clanData/${tag}`))
+    (endpoint === "players" || endpoint === "players-versus") ? (router.push(`/playerData/${tag}`)) : (router.push(`/clanData/${tag}`))
 
   }
-
   return (
     <>
-      <Row align="center">
+      <Row align="center ">
         <Col span={1}>
           <Text>{index} .</Text>
         </Col>
@@ -85,8 +84,11 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
         <Col span={7}>
           <div className="flex flex-col overflow-hidden line-clamp-1 ">
             <Text b size={14}>{allData?.name}</Text>
-            {(endpoint === "Player Rankings" || endpoint === "Player Rankings Versus") ?
-              <Text color={allData?.clan?.name ? "warning" : "error"} size={12}>{allData?.clan?.name || "not in clan"}</Text> : <Spacer y={1} />}
+            {(endpoint === "players" || endpoint === "players-versus") ?
+              <Text b css={{opacity:"0.7"}} color={allData?.clan?.name ? "warning" : "error"} size={12}>{allData?.clan?.name || "not in clan"}</Text> 
+            :
+            <Text b size={12} color="secondary" css={{opacity:"0.7"}}>{allData?.tag}</Text>
+            }
           </div>
         </Col>
         <Col span={2}>
