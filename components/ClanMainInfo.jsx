@@ -341,7 +341,7 @@ const handleSubmit = async () => {
           </Dropdown>
           <button onClick={()=> setCardState(!cardState)} className="p-1 px-2 rounded-md border-[.5px] border-gray-500/50">{cardState ? <RxDashboard /> : <BsViewList/>}</button>
       </div>
-        {showsugg && <div className="transition flex flex-col ease-out duration-200 absolute w-full z-50 top-0 mt-10">
+        {showsugg && <div className="transition flex flex-col ease-out duration-200 absolute w-full z-[999] top-0 mt-10">
           <Card css={{borderRadius:"8px"}} className="border-gray-500/50 border-[.5px] p-2 scrollbar-sm flex flex-col max-h-72 overflow-y-scroll">
             {suggLoading ? <Loading type="points" color="secondary" /> : 
             <div ref={parent} className="gap-1 flex flex-col">
