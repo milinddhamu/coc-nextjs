@@ -353,9 +353,9 @@ const handleSubmit = async () => {
        </div>
     </div>
   <div className="flex w-full justify-end px-8"><Text>Players:{data?.members || "-"}/50</Text></div>
-  <div ref={parent} id="membersScroll" className={`w-full p-1 sm:p-2 grid items-center justify-center ${cardState ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}`}>
+  <div ref={parent} id="membersScroll" className={`relative w-full p-1 sm:p-2 grid items-start   justify-center ${cardState ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"} ${createState && "mb-[48%] sm:mb-[26%] lg:mb-[20%] xl:mb-[15%]"} `}>
     {displayedMembers.map((a,i)=>
-      <div key={a?.tag} className="flex justify-center w-full h-full border-[.5px] p-2 sm:p-4 border-gray-500/20">
+      <div key={a?.tag} className="flex justify-center w-full border-[.5px] p-2 sm:p-4 border-gray-500/20">
       {cardState ? <ClanPlayerCard data={a} buttonState={createState}/> :
       <ClanList data={a} buttonState={createState}/> }
       </div>
@@ -368,7 +368,20 @@ const handleSubmit = async () => {
 
     {createState &&
     
-    <section className="z-20 flex flex-col w-full h-1/3 fixed bottom-0 backdrop-blur-xl border-t-[.5px] border-gray-500/50 overflow-scroll">
+    <div className="z-20 flex flex-col w-full h-1/3 fixed bottom-0 backdrop-blur-xl border-t-[.5px] border-gray-500/50 overflow-scroll">
+      <div className="flex w-full justify-center py-2 border-b-[.5px] border-gray-500/50">
+      <Pagination
+        onlyDots
+        loop 
+        size="lg"
+        showControls
+        showShadow
+        color="warning"
+        page={currentPage}
+        total={totalPageCount}
+        onChange={handlePaginationButton}
+      />
+    </div>
       <div className="flex flex-row w-full justify-between p-2">
       <Button color="primary" flat auto size="sm" css={{backgroundColor:"#006FEE70 !important"}} onClick={handleClickScrollTeamCancel}><HiMenuAlt2 className="scale-125"/></Button>
       <div className="flex flex-row gap-4">
@@ -391,9 +404,11 @@ const handleSubmit = async () => {
       {createdTeam.length !== 0 ? <div className="grid grid-flow-row grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-2 gap-2 w-full ">{createdTeam?.map((a,i)=> <Suggestions className="pointer-events-none" key={a?.name} data={a} />)}</div>  :
       <div className="flex w-full h-full items-center justify-center">
         <Text css={{opacity:"0.5"}}>Add Players from above...</Text></div>}
-    </section> 
+
+
+    </div> 
     }
-    <div className="mt-4 mb-6 ">
+    {!createState && <div className="mt-4 mb-6 ">
       <Pagination
         onlyDots
         loop 
@@ -405,7 +420,7 @@ const handleSubmit = async () => {
         total={totalPageCount}
         onChange={handlePaginationButton}
       />
-    </div>                
+    </div>}                
     <ToastContainer
       position="top-center"
       autoClose={2000}

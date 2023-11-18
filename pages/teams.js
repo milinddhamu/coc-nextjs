@@ -1,14 +1,14 @@
-import { Text, Link, Image, Dropdown, Spacer, Badge, Grid, Container, Input, Switch, Card, Loading, Button, Collapse } from "@nextui-org/react";
+import { Text, Link, Image, Dropdown, Spacer, Badge, Grid, Container, Input, Switch, Card, Button, Collapse } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, serverTimestamp, doc, deleteDoc, setDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../firebase"
 import { useRouter } from "next/router";
 import { MdDeleteOutline, MdOutlineModeEditOutline, MdOutlineDone } from "react-icons/md";
-
+import Loading from "@/utils/Loading";
 
 const teams = () => {
-  const { data: session } = useSession();
+  const { data: session,status } = useSession();
   const router = useRouter();
   const sessionEmail = session?.user.email;
   const collectionRef = collection(db, 'users');
@@ -63,7 +63,7 @@ const teams = () => {
     setEditable(false)
     getTeams();
   }
-  if(!session){
+  if(status === "unauthenticated"){
     return (
       <>
       <div className="flex min-h-screen min-w-screen items-center justify-center"><Text size={20}>Please <Link href="/auth/login" underline color="secondary">
@@ -74,10 +74,14 @@ const teams = () => {
     )
   }
 
+  if (status === "loading") {
+    return <Loading />
+  }
+
   return (
     <>
       <main className="flex flex-col min-w-screen items-center">
-        {(teamList?.length === 0) ? 
+        {!(teamList?.length !== 0) ? 
       (
       <div className="flex min-h-screen min-w-screen items-center"><Text size={20}>Visit your <Link underline href="/player" color="secondary">
           Clan Page
