@@ -5,7 +5,7 @@ import * as React from 'react';
 import { SessionProvider } from "next-auth/react"
 import { RecoilRoot } from 'recoil';
 import NavbarMain from "@/components/NavbarMain";
-import { SpeedInsights } from '@vercel/speed-insights/next';
+
 const lightTheme = createTheme({
   type: 'light',
   font: {},
@@ -76,7 +76,6 @@ export default function App({
       <NextUIProvider>
         <NavbarMain />
         <Component {...pageProps} />
-        <SpeedInsights />
       </NextUIProvider>
     </NextThemesProvider>
     </RecoilRoot>
