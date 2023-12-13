@@ -198,19 +198,85 @@ export default function Home({data}) {
   )
 }
 
+// export async function getServerSideProps() {
+//   const locationId = 32000113;
+//   const limit = 10;
+//   const endpoints = [
+//     'players',
+//     'clans',
+//     'clans-versus',
+//     'players-versus',
+//     'capitals',
+//   ];
+
+//   // Create an array of promises for each endpoint request
+//   const requests = endpoints.map(async (endpoint) => {
+//     const url = `https://cocproxy.royaleapi.dev/v1/locations/${locationId}/rankings/${endpoint}?limit=${limit}`;
+//     const options = {
+//       method: 'GET',
+//       url,
+//       headers: {
+//         Authorization: `Bearer ${process.env.COC_API}`
+//       }
+//     };
+
+//     try {
+//       const response = await axios.request(options);
+//       return { [endpoint]: response.data };
+//     } catch (error) {
+//       console.error(`Error fetching data for endpoint "${endpoint}":`, error);
+//       return { [endpoint]: null };
+//     }
+//   });
+
+//   // Add request for the locations endpoint
+//   const locationsUrl = `https://cocproxy.royaleapi.dev/v1/locations`;
+//   const locationsOptions = {
+//     method: 'GET',
+//     url: locationsUrl,
+//     headers: {
+//       Authorization: `Bearer ${process.env.COC_API}`
+//     }
+//   };
+
+//   // Add the location request to the array of promises
+//   requests.push(
+//     axios
+//       .request(locationsOptions)
+//       .then((response) => ({ locations: response.data }))
+//       .catch((error) => {
+//         console.error('Error fetching data for locations:', error);
+//         return { locations: null };
+//       })
+//   );
+
+//   // Use Promise.all to wait for all requests to complete
+//   const results = await Promise.all(requests);
+
+//   // Combine the results into a single data object
+//   const data = results.reduce((acc, result) => ({ ...acc, ...result }), {});
+
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
+
 export async function getServerSideProps() {
   const locationId = 32000113;
   const limit = 10;
   const endpoints = [
     'players',
     'clans',
-    'clans-versus',
-    'players-versus',
+    'clans-builder-base',
+    'players-builder-base',
     'capitals',
   ];
 
-  // Create an array of promises for each endpoint request
-  const requests = endpoints.map(async (endpoint) => {
+  const data = {};
+
+  for (const endpoint of endpoints) {
     const url = `https://cocproxy.royaleapi.dev/v1/locations/${locationId}/rankings/${endpoint}?limit=${limit}`;
     const options = {
       method: 'GET',
@@ -222,40 +288,12 @@ export async function getServerSideProps() {
 
     try {
       const response = await axios.request(options);
-      return { [endpoint]: response.data };
+      data[endpoint] = response.data;
     } catch (error) {
       console.error(`Error fetching data for endpoint "${endpoint}":`, error);
-      return { [endpoint]: null };
+      data[endpoint] = null;
     }
-  });
-
-  // Add request for the locations endpoint
-  const locationsUrl = `https://cocproxy.royaleapi.dev/v1/locations`;
-  const locationsOptions = {
-    method: 'GET',
-    url: locationsUrl,
-    headers: {
-      Authorization: `Bearer ${process.env.COC_API}`
-    }
-  };
-
-  // Add the location request to the array of promises
-  requests.push(
-    axios
-      .request(locationsOptions)
-      .then((response) => ({ locations: response.data }))
-      .catch((error) => {
-        console.error('Error fetching data for locations:', error);
-        return { locations: null };
-      })
-  );
-
-  // Use Promise.all to wait for all requests to complete
-  const results = await Promise.all(requests);
-
-  // Combine the results into a single data object
-  const data = results.reduce((acc, result) => ({ ...acc, ...result }), {});
-
+  }
   return {
     props: {
       data,
