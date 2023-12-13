@@ -1,10 +1,11 @@
 import PlayerProfile from "@/components/PlayerProfile";
 import axios from "axios";
-import { Card, Container, Text, Row, Col, User, Avatar, Button, Navbar, Switch } from '@nextui-org/react'
+import { Card, Container, Text, Row, Col, User, Avatar, Button, Navbar, Switch } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
-import Image from 'next/image'
+import Image from 'next/image';
 import { useRouter } from "next/router";
-import Loading from "@/utils/Loading"
+import Loading from "@/utils/Loading";
+
 const PlayerInfo = ({ data }) => {
   const [loading, setLoading] = useState(true)
   const [fetchedData, setFetchedData] = useState(null);
@@ -56,7 +57,7 @@ const PlayerInfo = ({ data }) => {
 
 
 export async function getServerSideProps(context) {
-  const { playerInfo } = context.query;
+  const { playerInfo } = context.query
 
   if (!playerInfo) {
     return {

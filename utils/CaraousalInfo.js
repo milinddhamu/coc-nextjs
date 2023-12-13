@@ -58,7 +58,7 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
     <>
       <Row align="center ">
         <Col span={1}>
-          <Text>{index} .</Text>
+          <Text weight="bold" size={12} css={{letterSpacing:"0.01rem"}}>{index} .</Text>
         </Col>
         <Col span={1}>
           <Image

@@ -26,8 +26,8 @@ const LeftSection = ({townHall}) => {
       <Spacer />
 
       </div>
-        <Card variant="bordered" className="flex flex-col items-center max-h-96 min-h-72 w-full mt-4">
-          <div className='overflow-y-scroll scrollbar-hide w-full scale-105'>
+        <Card variant="bordered" className="flex flex-col items-center max-h-96 min-h-72 w-full mt-4 rounded-3xl">
+          <div className={`overflow-y-scroll scrollbar-hide w-full scale-105 ${isDark ? "innerBottomShadowBlack" : "innerBottomShadowWhite"}`}>
           <a class="twitter-timeline" data-theme={isDark ? "dark" : "light"} href="https://twitter.com/ClashofClans?ref_src=twsrc%5Etfw">Tweets by ClashofClans</a> <Script async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
           </div>
         </Card>

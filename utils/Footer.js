@@ -9,7 +9,7 @@ const Footer = () => {
         <Link href="https://github.com/milinddhamu/coc-nextjs">
             <Button
               id="github"
-              auto
+              iconOnly
               bordered
               css={{borderWidth:"0.5px",borderColor:"#6b728050"}}
               color="neutral"

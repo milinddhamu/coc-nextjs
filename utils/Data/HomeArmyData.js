@@ -2,7 +2,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Barbarian.png',
     id: 'Barbarian',
-    maxLevel:11,
+    maxLevel:12,
     superTroop: true,
     superTroopLevel:8,
     modelUrl: "/assets/models/Barbarian.png",
@@ -12,7 +12,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Archer.png',
     modelUrl: "/assets/models/Archer.png",
-    maxLevel:11,
+    maxLevel:12,
     superTroop: true,
     superTroopLevel:8,
     id: 'Archer',
@@ -22,7 +22,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Giant.png',
     modelUrl: "/assets/models/Giant.png",
-    maxLevel:11,
+    maxLevel:12,
     superTroop: true,
     superTroopLevel:11,
     id: 'Giant',
@@ -43,7 +43,7 @@ export const homeArmy = [
     url: '/assets/homeArmy/Wall_Breaker.png',
     modelUrl: "/assets/models/Wall_Breaker.png",
     superTroop: true,
-    maxLevel:11,
+    maxLevel:12,
     superTroopLevel:11,
     id: 'Wall Breaker',
     des: "Nothing warms a Wall Breaker's cold and undead heart like blowing up walls. A squad of them will make way for your ground units, and they will do it with a BANG!",
@@ -53,7 +53,7 @@ export const homeArmy = [
     url: '/assets/homeArmy/Balloon.png',
     modelUrl: "/assets/models/Balloon.png",
     superTroop: true,
-    maxLevel:10,
+    maxLevel:11,
     superTroopLevel:8,
     id: 'Balloon',
     des: "These promoted skeletons have traded in their joy of destroying walls for a joy of destroying defenses. Deploy them to take out pesky mortars and cannons!",
@@ -64,7 +64,7 @@ export const homeArmy = [
     url: '/assets/homeArmy/Wizard.png',
     modelUrl: "/assets/models/Wizard.png",
     superTroop: true,
-    maxLevel:11,
+    maxLevel:12,
     superTroopLevel:9,
     id: 'Wizard',
     des: "The Wizard is a terrifying presence on the battlefield. Pair him up with some of his fellows and cast concentrated blasts of destruction on anything, land or sky!",
@@ -74,7 +74,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Healer.png',
     modelUrl: "/assets/models/Healer.png",
-    maxLevel:8,
+    maxLevel:9,
     id: 'Healer',
     des: "The Healer is a flying unit that heals nearby troops. It is weak and does not deal any damage, but it provides valuable support by keeping other troops alive.",
     village: "home"
@@ -84,7 +84,7 @@ export const homeArmy = [
     url: '/assets/homeArmy/Dragon.png',
     modelUrl: "/assets/models/Dragon.png",
     superTroop: true,
-    maxLevel:10,
+    maxLevel:11,
     superTroopLevel:7,
     id: 'Dragon',
     des: "The mighty Dragon is a flying unit that deals devastating splash damage with fireballs. It can attack both ground and air targets, making it a formidable force.",
@@ -94,7 +94,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/P.E.K.K.A.png',
     modelUrl: "/assets/models/P.E.K.K.A.png",
-    maxLevel:10,
+    maxLevel:11,
     id: 'P.E.K.K.A',
     des: "The P.E.K.K.A. is a heavily armored unit with a massive sword. It deals tremendous damage and has a lot of hitpoints, making it a fearsome melee fighter.",
     village: "home"
@@ -114,7 +114,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Miner.png',
     modelUrl: "/assets/models/Miner.png",
-    maxLevel:9,
+    maxLevel:10,
     superTroop: true,
     superTroopLevel:7,
     id: 'Miner',
@@ -125,7 +125,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Electro_Dragon.png',
     modelUrl: "/assets/models/Electro_Dragon.png",
-    maxLevel:6,
+    maxLevel:7,
     id: 'Electro Dragon',
     des: "The Electro Dragon is an aerial unit that shoots chain lightning at multiple targets. It deals moderate damage and has the ability to briefly stun defenses.",
     village: "home"
@@ -143,7 +143,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Dragon_Rider.png',
     modelUrl: "/assets/models/Dragon_Rider.png",
-    maxLevel:3,
+    maxLevel:4,
     id: 'Dragon Rider',
     des: "This aerial engine of destruction readily and frankly, quite excitedly lays waste to any defense it comes across. The skeleton onboard swears he's not touching the controls.",
     village: "home"
@@ -155,6 +155,15 @@ export const homeArmy = [
     maxLevel:3,
     id: 'Electro Titan',
     des: "Barely controlling her raw magical power, the Electro Titan is a formidable force on the battlefield. She channels some of her magic into a powerful electro whip while the rest spills out to damage everything around her.",
+    village: "home"
+
+  },
+  {
+    url: '/assets/homeArmy/Root_Rider.png',
+    modelUrl: "/assets/models/Root_Rider.png",
+    maxLevel:3,
+    id: 'Root Rider',
+    des: "This earth warrior is so in tune with nature she doesn’t need to walk herself. Riding into battle on top a tough tree root which can smash through walls and slam defenses into dust.",
     village: "home"
 
   },
@@ -182,7 +191,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Valkyrie.png',
     modelUrl: "/assets/models/Valkyrie.png",
-    maxLevel:10,
+    maxLevel:11,
     superTroop: true,
     superTroopLevel:7,
     id: 'Valkyrie',
@@ -193,7 +202,7 @@ export const homeArmy = [
   {
     url: '/assets/homeArmy/Golem.png',
     modelUrl: "/assets/models/Golem.png",
-    maxLevel:12,
+    maxLevel:13,
     id: 'Golem',
     des: "The mighty Golem loves to soak up damage! When destroyed, it explodes and splits into Golemites. The resulting Golemites have one-fifth the Golem's strength and hitpoints.",
     village: "home"
@@ -203,7 +212,7 @@ export const homeArmy = [
     url: '/assets/homeArmy/Witch.png',
     modelUrl: "/assets/models/Witch.png",
     superTroop: true,
-    maxLevel:6,
+    maxLevel:7,
     superTroopLevel:5,
     id: 'Witch',
     des: "The Witch never fights alone, constantly raising dead warriors from past battles to lead her attacks. Upgraded Witches raise more skeletons at a time.",
@@ -265,7 +274,7 @@ export const homeSpells = [
   {
     url: '/assets/homeArmy/Lightning_Spell.png',
     modelUrl: '/assets/homeArmy/Lightning_Spell.png',
-    maxLevel:10,
+    maxLevel:11,
     id: 'Lightning Spell',
     village: "home",
     des: "Electrocute your enemies with a bolt of lightning! Cast this spell at the enemy village to damage and stun buildings and units inside a small area.",
@@ -273,7 +282,7 @@ export const homeSpells = [
   {
     url: '/assets/homeArmy/Healing_Spell.png',
     modelUrl: '/assets/homeArmy/Healing_Spell.png',
-    maxLevel:9,
+    maxLevel:10,
     id: 'Healing Spell',
     village: "home",
     des: "Heal your Troops to keep them in the fight! Cast this spell to create a Ring of Healing. Your units will be healed while they are inside this ring.",
@@ -322,13 +331,13 @@ export const homeSpells = [
     url: '/assets/homeArmy/Recall_Spell.png',
     modelUrl: '/assets/homeArmy/Recall_Spell.png',
     id: 'Recall Spell',
-    maxLevel:4,
+    maxLevel:5,
     village: "home",
     des: "Attack going badly? Need to come in from another direction? The Recall Spell summons back Troops, Heroes and Pets to the deployment bar. You can then send the recalled units back out for a second strike.",
   },
   {
     url: '/assets/homeArmy/Poison_Spell.png',
-    maxLevel:9,
+    maxLevel:10,
     modelUrl: '/assets/homeArmy/Poison_Spell.png',
     id: 'Poison Spell',
     village: "home",
@@ -372,7 +381,7 @@ export const homeHeroes = [
   {
     url: '/assets/homeArmy/Barbarian_King.png',
     modelUrl: '/assets/models/Barbarian_King.png',
-    maxLevel:90,
+    maxLevel:95,
     id: 'Barbarian King',
     des: "This colossal menace soaks up huge amounts of damage and bashes anything in his path. He guards his territory fiercely when defending, and can launch into a devastating rage when attacking once his Iron Fist ability is unlocked!",
     village: "home"
@@ -381,7 +390,7 @@ export const homeHeroes = [
   {
     url: '/assets/homeArmy/Archer_Queen.png',
     modelUrl: '/assets/models/Archer_Queen.png',
-    maxLevel:90,
+    maxLevel:95,
     id: 'Archer Queen',
     des: "This graceful huntress is a master of destructive force, though modest in health. She snipes targets in her territory when defending, and can summon stealth and terrifying damage when attacking once her Royal Cloak ability is unlocked!",
     village: "home"
@@ -389,7 +398,7 @@ export const homeHeroes = [
   {
     url: '/assets/homeArmy/Grand_Warden.png',
     modelUrl: '/assets/models/Grand_Warden.png',
-    maxLevel:65,
+    maxLevel:70,
     id: 'Grand Warden',
     des: "This veteran battle-scholar seeks out groups of friendly troops to fight behind and boost with his Life Aura, and assumes the form of a tower on defense. Attacking, he can walk over Walls or fly high, and can make nearby troops immune to damage once his Eternal Tome ability is unlocked!",
     village: "home"
@@ -398,7 +407,7 @@ export const homeHeroes = [
   {
     url: '/assets/homeArmy/Royal_Champion.png',
     modelUrl: '/assets/models/Royal_Champion.png',
-    maxLevel:40,
+    maxLevel:45,
     id: 'Royal Champion',
     des: "Over the Wall and at them! The Royal Champion is only afraid of four things, and the enemy isn't one of them. She attacks with her spear at short range and throws her shield to take down defenses once her Seeking Shield ability is unlocked!",
     village: "home"
@@ -468,6 +477,14 @@ export const homePets = [
     id: 'Phoenix',
     des: "A true friend will egg you on when things get rough. Phoenix starts the battle as a helpless egg, but at the moment her Hero might go down, she hatches. The furious fiery fowl then gives temporary invulnerability to its Hero and engages nearby enemies.",
     modelUrl: "/assets/models/Phoenix.png",
+    village: "home"
+  },
+  {
+    url: '/assets/pets/Spirit_Fox.png',
+    maxLevel:10,
+    id: 'Spirit Fox',
+    des: "An extremely shy creature, who’s happiest alone in the woods outside the Village. When called to battle, Spirit Fox fights fiercely alongside their hero and helps them with a little invisibility.",
+    modelUrl: "/assets/models/Spirit_Fox.png",
     village: "home"
   },
 ]

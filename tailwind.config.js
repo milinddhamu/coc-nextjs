@@ -17,8 +17,11 @@ module.exports = {
       'xl':'1280px',
     },
     extend: {
+      maxWidth: {
+        '8xl': '1400px'
+      },
       inset:{
-      px:"1px",
+        px:"1px",
       },
       colors:{
         "gray-button":"#0F1212",

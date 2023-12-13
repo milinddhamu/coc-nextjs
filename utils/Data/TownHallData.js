@@ -118,6 +118,13 @@ export const townHall = {
         url: "/assets/townHall/Giga_Inferno15-5.png",
       },
     }
+  },
+  16: {
+    townhallweaponlevel: {
+      1: {
+        url:"/assets/townHall/TH16_Main.png"
+      }
+    }
   }
 };
 

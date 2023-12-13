@@ -67,7 +67,7 @@ const Comments = ({playerTag}) => {
         <Text>Comments</Text>
       </Card.Header>
       <Card.Body css={{padding:"0px 12px 12px 12px"}}>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col">
       {commentsData.length !== 0 ? 
       commentsData?.map((a,i)=>(
         <CommentsCard data={a} key={a.id} onChange={handleChangeComment}/>

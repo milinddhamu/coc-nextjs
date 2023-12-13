@@ -1,11 +1,48 @@
 import { Card, Progress, Text, Spacer } from "@nextui-org/react";
 
+const superTroopsList = [
+  "Super Barbarian",
+  "Super Archer",
+  "Sneaky Goblin",
+  "Super Wall Breaker",
+  "Super Giant",
+  "Rocket Balloon",
+  "Super Wizard",
+  "Super Dragon",
+  "Inferno Dragon",
+  "Super Minion",
+  "Super Valkyrie",
+  "Super Witch",
+  "Ice Hound",
+  "Super Bowler",
+  "Super Miner",
+  "Super Hog Rider",
+  // Add other super troops as needed
+];
+
 const ProfileProgress = ({ data, position }) => {
   const textSize = position === "player" && 15 || position === "clan" && 11;
   const maxWidthText = position === "player" && 90 || position === "clan" && 60;
   const paddingWise = position === "player" && 4 || position === "clan" && 0;
-  const troopsLevel = (data?.troops).reduce((total, a) => total + Number(a.level), 0)
-  const troopsMaxLevel = (data?.troops).reduce((total, a) => total + Number(a.maxLevel), 0)
+
+  // const troopsLevel = (data?.troops).reduce((total, a) => total + Number(a.level), 0)
+  // const troopsMaxLevel = (data?.troops).reduce((total, a) => total + Number(a.maxLevel), 0)
+  const troopsLevel = (data?.troops).reduce((total, a) => {
+    if (superTroopsList.includes(a.name)) {
+      // Exclude super troops from calculation
+      return total;
+    }
+    return total + Number(a.level);
+  }, 0);
+  
+  const troopsMaxLevel = (data?.troops).reduce((total, a) => {
+    if (superTroopsList.includes(a.name)) {
+      // Exclude super troops from calculation
+      return total;
+    }
+    return total + Number(a.maxLevel);
+  }, 0);
+
   const troopsPercent = Math.floor((troopsLevel / troopsMaxLevel) * 100)
 
   const heroesLevel = (data?.heroes).reduce((total, a) => total + Number(a.level), 0)
