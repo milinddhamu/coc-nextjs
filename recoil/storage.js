@@ -17,3 +17,9 @@ export const teamState = atom({
   key:"TeamList",
   default:[],
 })
+
+export const locationsState = atom({
+  key:"Locations",
+  default:[],
+})
+

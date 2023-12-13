@@ -31,6 +31,10 @@ const NavbarMain = () => {
       name: "Sample Profile",
       link: "/playerData/2LQUJU9YC"
     },
+    {
+      name: "Global chat",
+      link: "/globalchat"
+    },
   ];  
   const filteredCollapseItems = session?.user
   ? collapseItems.filter(item => item.name !== "Log In")
@@ -57,7 +61,7 @@ const NavbarMain = () => {
         <Navbar.Content>
         <Navbar.Item>
           {!session?.user ? 
-            <Button auto flat color="secondary" onClick={()=> router.push("/auth/login")}>
+            <Button auto size="sm" flat color="secondary" onClick={()=> router.push("/auth/login")}>
               Sign In
             </Button> : <Dropdown placement="bottom-right">
             <Navbar.Item>

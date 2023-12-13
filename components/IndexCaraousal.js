@@ -3,8 +3,9 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import CaraousalCard from "@/utils/CaraousalCard";
 import { Text } from "@nextui-org/react";
-
+import {useState} from 'react';
 const IndexCaraousal = ({ data }) => {
+  console.log(data, "caraousal")
   const [sliderRef] = useKeenSlider({
     mode: "snap",
     loop: true,
@@ -22,9 +23,8 @@ const IndexCaraousal = ({ data }) => {
       spacing: 30,
     },
   });
-
-  const entries = Object.entries(data);
-
+  const entries = Object.entries(data)
+  
   return (
     <div ref={sliderRef} className="keen-slider bg-gradient-to-b from-violet-500/40 via-violet-500/20 to-violet-500/0">
       <div className="keen-slider__slide flex flex-col justify-start items-start p-12 sm:p-24">
@@ -46,3 +46,5 @@ const IndexCaraousal = ({ data }) => {
 };
 
 export default IndexCaraousal;
+
+

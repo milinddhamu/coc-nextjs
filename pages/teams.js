@@ -99,9 +99,12 @@ const teams = () => {
                     </div>
                     <div className="col-span-3 px-2">
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-                        {a.players?.map((players, index) => {
+                        {a.players?.map((player, index) => {
+                          const PLAYER_TAG = player.replace('#','')
                           return (
-                            <Badge key={players} variant="flat">{players}</Badge>
+                            <Link href={`/playerData/${PLAYER_TAG}`}>
+                            <Badge key={player} variant="flat">{player}</Badge>
+                            </Link>
                           )
                         })}
                       </div>

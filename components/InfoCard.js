@@ -28,7 +28,6 @@ const lilitaOne = Lilita_One({
 })
 
 const InfoCard = ({ data }) => {
-
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);

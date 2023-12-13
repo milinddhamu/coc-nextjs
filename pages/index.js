@@ -11,13 +11,15 @@ import {useRouter} from "next/router"
 import axios from "axios";
 import IndexCaraousal from "@/components/IndexCaraousal";
 import { useRecoilState } from 'recoil';
-import { userState } from "@/recoil/storage";
+import { locationsState, userState } from "@/recoil/storage";
 import { useSession } from "next-auth/react";
 import Footer from "@/utils/Footer";
+import GlobalChat from "@/components/GlobalChat";
 
 export default function Home({data}) {
   const {data:session} = useSession;
   const [user , setUser ] = useRecoilState(userState);
+  const [locations , setLocations ] = useRecoilState(locationsState);
 
   const controls = useAnimation();
   useEffect(() => {
@@ -65,30 +67,30 @@ export default function Home({data}) {
       </div> :
         <>
           <main className="relative transition-all">
-            <div className="flex flex-row cursor-pointer -mt-2">
+            <div className="flex flex-row cursor-pointer pb-2 pt-1">
               <Marquee gradient speed={80} direction="left" loop={0} autoFill gradientColor={gradientColorMarquee}>
               <Text size={86} h1 weight="black" css={{lineHeight:"0.75",opacity:"0.4"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
               </Marquee>
             </div>
-            <section className="flex flex-col items-center justify-center">
-            <motion.div 
-            initial={{
-              opacity: 0,
-              scale: 1,
-              filter: "blur(7px)",
-            }}
-            transition={{
-              duration: 0.3,
-              delay:0,
-              ease:"circOut",
-              stiffness:50
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              filter: "blur(0px)",
-            }}
-            className={`z-10 max-w-6xl gap-4 flex flex-col md:flex-row rounded-3xl mx-4 p-6 backdrop-blur-[4px] ${isDark ? "bg-black/50" : "bg-white/50"} border-[0.5px] border-slate-400/30`}>
+            <section className="flex flex-col items-center justify-center px-4">
+              <motion.div 
+              initial={{
+                opacity: 0,
+                scale: 1.2,
+                filter: "blur(7px)",
+              }}
+              transition={{
+                duration: 0.3,
+                delay:0,
+                ease:"easeIn",
+                stiffness:50
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                filter: "blur(0px)",
+              }}
+              className={`z-10 gap-4 max-w-8xl flex flex-col md:flex-row rounded-3xl p-6 backdrop-blur-[4px] ${isDark ? "bg-gray-500/10 threeDShadowDark" : "bg-gray-500/10 threeDShadowLight"}`}>
                 <Grid.Container>
                   <Grid>
                   <Text h2 weight="semibold" className="text-justify">Track and analyze your progress in Clash of Clans with ease. Simply enter your player tag or clan tag in the form below to retrieve valuable insights and statistics.</Text>
@@ -119,7 +121,7 @@ export default function Home({data}) {
                   </Grid>
                   <Spacer />
                   <Grid>
-                    <Text weight="hairline" className="text-justify">
+                    <Text weight="thin" className="text-justify">
                     Our Profile Tracker provides you with up-to-date and accurate information directly from the official Clash of Clans API. Join thousands of Clashers who rely on our tool to stay informed and improve their game.
                     </Text>
                   </Grid>
@@ -127,7 +129,7 @@ export default function Home({data}) {
                 <div className="flex md:border-r-[.5px] border-b-[.5px] border-slate-400/30 mx-1"></div>
                 <Grid.Container gap={1} className="relative">
                   <Grid xs={12} alignItems="start">
-                  <Text className="text-justify z-10" weight="hairline">
+                  <Text className="text-justify" weight="thin">
                   Start tracking your Clash of Clans progress today and dominate the battlefield like never before. Join the ranks of the strongest clans and become a legendary player. Let's clash on!
                   </Text>
                   </Grid>
@@ -153,15 +155,37 @@ export default function Home({data}) {
                     </Grid>
                   <Grid xs={12} alignItems="end" justify="flex-end" className="overflow-hidden">
                   <Button color="secondary" className="bg-gradient-to-tr from-violet-800 via-violet-600 to-yellow-200 animate-text m-2 w-full" auto onPress={()=> router.push("/player")}>
-                  <Text weight="light">Search Player/Clan</Text>
+                  <Text css={{letterSpacing:"0.02rem"}}>Search Player/Clan</Text>
                   </Button>
                   </Grid>
                 </Grid.Container>
-            </motion.div>
-            <Text weight="hairline" className="p-6 text-justify">
-            We're dedicated to continuously improving our Profile Tracker to meet the needs of Clash of Clans players like you. Stay tuned for exciting updates and new features!
-            </Text>
-            </section>
+              </motion.div>
+              <Text weight="thin" className="p-6 text-justify">
+              We're dedicated to continuously improving our Profile Tracker to meet the needs of Clash of Clans players like you. Stay tuned for exciting updates and new features!
+              </Text>
+              </section>
+          
+            <Spacer y={1}/>
+            <div className="flex flex-col sm:flex-row justify-center w-full px-4 gap-2 sm:gap-12 transition-all duration-500 ">
+              <div className="flex flex-col gap-4">
+            <div className="flex flex-col justify-start items-start coc-text"> 
+              <Text weight="extrabold" css={{
+                      textGradient: "0deg, $yellow400 -20%, $yellow700 100%",
+                      lineHeight: "1.25"
+                  }} size={50}>
+                GLOBAL
+              </Text>
+              <Text weight="extrabold" css={{
+                      textGradient: "0deg, $yellow400 -20%, $yellow700 100%",
+                      lineHeight: "1.25"
+                  }} size={50}>
+                CHAT
+              </Text>
+            </div>
+            </div>
+            <GlobalChat />
+
+            </div>
             <Spacer y={1}/>
             {data && 
           <IndexCaraousal data={data} />
@@ -174,14 +198,79 @@ export default function Home({data}) {
   )
 }
 
+// export async function getServerSideProps() {
+//   const locationId = 32000113;
+//   const limit = 10;
+//   const endpoints = [
+//     'players',
+//     'clans',
+//     'clans-versus',
+//     'players-versus',
+//     'capitals',
+//   ];
+
+//   // Create an array of promises for each endpoint request
+//   const requests = endpoints.map(async (endpoint) => {
+//     const url = `https://cocproxy.royaleapi.dev/v1/locations/${locationId}/rankings/${endpoint}?limit=${limit}`;
+//     const options = {
+//       method: 'GET',
+//       url,
+//       headers: {
+//         Authorization: `Bearer ${process.env.COC_API}`
+//       }
+//     };
+
+//     try {
+//       const response = await axios.request(options);
+//       return { [endpoint]: response.data };
+//     } catch (error) {
+//       console.error(`Error fetching data for endpoint "${endpoint}":`, error);
+//       return { [endpoint]: null };
+//     }
+//   });
+
+//   // Add request for the locations endpoint
+//   const locationsUrl = `https://cocproxy.royaleapi.dev/v1/locations`;
+//   const locationsOptions = {
+//     method: 'GET',
+//     url: locationsUrl,
+//     headers: {
+//       Authorization: `Bearer ${process.env.COC_API}`
+//     }
+//   };
+
+//   // Add the location request to the array of promises
+//   requests.push(
+//     axios
+//       .request(locationsOptions)
+//       .then((response) => ({ locations: response.data }))
+//       .catch((error) => {
+//         console.error('Error fetching data for locations:', error);
+//         return { locations: null };
+//       })
+//   );
+
+//   // Use Promise.all to wait for all requests to complete
+//   const results = await Promise.all(requests);
+
+//   // Combine the results into a single data object
+//   const data = results.reduce((acc, result) => ({ ...acc, ...result }), {});
+
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
+
 export async function getServerSideProps() {
   const locationId = 32000113;
   const limit = 10;
   const endpoints = [
     'players',
     'clans',
-    'clans-versus',
-    'players-versus',
+    'clans-builder-base',
+    'players-builder-base',
     'capitals',
   ];
 

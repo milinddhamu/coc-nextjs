@@ -22,7 +22,7 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
         data.image = allData?.league.iconUrls.tiny;
         data.trophies = allData?.trophies;
         break;
-      case 'players-versus':
+      case 'players-builder-base':
         data.image = "/assets/Builder_Base_Diamond_League_1.png";
         data.trophies = allData?.builderBaseTrophies;
         break;
@@ -30,7 +30,7 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
         data.image = allData?.badgeUrls.small;
         data.trophies = allData?.clanPoints;
         break;
-      case 'clans-versus':
+      case 'clans-builder-base':
         data.image = allData?.badgeUrls.small;
         data.trophies = allData?.clanVersusPoints;
         break;
@@ -58,7 +58,7 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
     <>
       <Row align="center ">
         <Col span={1}>
-          <Text>{index} .</Text>
+          <Text weight="bold" size={12} css={{letterSpacing:"0.01rem"}}>{index} .</Text>
         </Col>
         <Col span={1}>
           <Image

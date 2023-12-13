@@ -14,7 +14,7 @@ const CaraousalCard = ({data,name}) => {
   };
   return (
     <>
-      <Card className="border-[.5px] border-gray-500/20 mx-3 p-3" css={{borderRadius:"20px",minWidth:"350px",shadow:"none"}} >
+      <Card className="mx-3 p-3 threeDShadowLight" css={{borderRadius:"20px",minWidth:"350px",border:"none"}} >
         <Text b className="flex justify-center w-full uppercase py-2 border-b-[.5px] border-gray-500/50">{name.replace("-"," ")}&nbsp;{"rankings"}</Text>
           <Spacer y={.5}/> 
           {allData ? 
