@@ -51,7 +51,7 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
   const endpointData = getDataByEndpoint(endpoint);
 
   const handleVisitSubmit = () => {
-    (endpoint === "players" || endpoint === "players-versus") ? (router.push(`/playerData/${tag}`)) : (router.push(`/clanData/${tag}`))
+    (endpoint === "players" || endpoint === "players-builder-base") ? (router.push(`/playerData/${tag}`)) : (router.push(`/clanData/${tag}`))
 
   }
   return (
