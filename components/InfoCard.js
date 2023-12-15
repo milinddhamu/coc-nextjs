@@ -99,7 +99,10 @@ const InfoCard = ({ data }) => {
     delay: 0.5,
   };
 
-  const handleTagInputChange = (e) => setCompareTag(e.target.value);
+  const handleTagInputChange = (e) => {
+    const inputTag = e.target.value.replace("#","");
+    setCompareTag(inputTag);
+  }
   const handleCompareButton = () => {
     if(compareTag){
       const compareTags = [data.tag.replace("#","") , compareTag];
@@ -251,12 +254,13 @@ const InfoCard = ({ data }) => {
               </div>
               <Spacer y={.5} />
               <div>
-                <button className="flex flex-row items-center gap-2 bg-violet-600 px-8 py-4 rounded-2xl font-semibold" onClick={handler}>Compare <GoArrowSwitch/> </button>
+                <button className="threeDShadowLight flex flex-row items-center gap-2 bg-violet-600 px-8 py-2 rounded-2xl font-semibold hover:translate-y-1 transition-tranform duration-300 ease-out" onClick={handler}><Text weight="semibold" className="flex flex-row gap-2 items-center">Compare <GoArrowSwitch className="font-bold"/></Text></button>
               </div>
 
               {/* Modal for Compare */}
               <Modal
         closeButton
+        blur
         aria-labelledby="modal-title"
         open={visible}
         onClose={closeHandler}
@@ -279,9 +283,7 @@ const InfoCard = ({ data }) => {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button auto color="secondary" onPress={handleCompareButton}>
-            Compare
-          </Button>
+          <button id="compareButtonModal" className="flex flex-row items-center gap-2 border-2 hover:bg-violet-600 border-violet-600/70 px-4 py-1 rounded-xl font-semibold" onClick={handleCompareButton}><Text size={15} className="flex flex-row gap-2 items-center">Compare <GoArrowSwitch/></Text></button>
         </Modal.Footer>
       </Modal>
 
