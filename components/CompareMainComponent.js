@@ -9,10 +9,10 @@ import { motion, animate,useMotionValue, useMotionTemplate } from "framer-motion
 
 const CompareMainComponent = ({ playerOneData, playerTwoData }) => {
   const getImageSource = (playerData) => {
-    const townHallDefense = townHall[playerData.townHallLevel]?.townhallweaponlevel[playerData.townHallWeaponLevel]?.url;
-    const townHallStorage = townHall[playerData.townHallLevel]?.url;
-    const thImage = (playerData.townHallLevel > 11) ? townHallDefense : townHallStorage;
-    const bhImage = builderHall[playerData.builderHallLevel].url;
+    const townHallDefense = townHall[playerData?.townHallLevel]?.townhallweaponlevel[playerData.townHallWeaponLevel]?.url;
+    const townHallStorage = townHall[playerData?.townHallLevel]?.url;
+    const thImage = (playerData?.townHallLevel > 11) ? townHallDefense : townHallStorage;
+    const bhImage = builderHall[playerData?.builderHallLevel]?.url;
 
     return { thImage, bhImage };
   };

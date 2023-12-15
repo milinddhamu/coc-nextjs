@@ -2,10 +2,18 @@ import axios from 'axios';
 import CompareMainComponent from "@/components/CompareMainComponent";
 import { useState } from 'react';
 const CompareTags = ({data}) => {
-  const [playerOneData , setPlayerOneData] = useState(()=> data[0])
-  const [playerTwoData , setPlayerTwoData] = useState(()=> data[1])
+  const [playerOneData , setPlayerOneData] = useState(()=> data && data[0])
+  const [playerTwoData , setPlayerTwoData] = useState(()=> data && data[1]);
+
+
   return (
-    <CompareMainComponent playerOneData={playerOneData} playerTwoData={playerTwoData}/>
+    <>
+    {data ?
+    <CompareMainComponent playerOneData={playerOneData} playerTwoData={playerTwoData}/> : 
+    <div className="flex justify-center items-center w-full h-screen">
+    <h1>API is not working...</h1>
+    </div> }
+    </>
   );
 }
 
