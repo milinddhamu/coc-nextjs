@@ -39,7 +39,7 @@ const CompareMainComponent = ({ playerOneData, playerTwoData }) => {
                     <div className='flex flex-row justify-center items-center relative'>
                       <div className="opacity-0 w-full h-full absolute bg-gradient-to-bl from-gray-100 via-slate-300 to-slate-800 blur-lg animate-text rounded-full group-hover:opacity-50 transition-all duration-800 ease-linear "></div>
                       <Card.Image src='/assets/others/XP.png' showSkeleton containerCss={{ borderRadius: "100%" }} height={32} width={32} className='mt-1 drop-shadow-md' alt="xp" />
-                      <div className='absolute text-white text-xl font-extrabold drop-shadow-[0.8px_2px_0.1px_rgba(0,0,0,1)]'>{playerTwoData.expLevel || 0}</div>
+                      <div className='absolute text-white text-xl font-extrabold drop-shadow-[0.8px_2px_0.1px_rgba(0,0,0,1)]'>{playerOneData.expLevel || 0}</div>
                     </div>
                   </motion.div>
         
@@ -64,7 +64,7 @@ const CompareMainComponent = ({ playerOneData, playerTwoData }) => {
                       <div className='absolute text-white text-xl font-extrabold drop-shadow-[0.8px_2px_0.1px_rgba(0,0,0,1)]'>{playerTwoData.expLevel || 0}</div>
                     </div>
                   </motion.div>
-          <Text b className="pt-1" size={18}>{playerOneData.name}</Text> 
+          <Text b className="pt-1" size={18}>{playerTwoData.name}</Text> 
           </div>
         <div className="flex flex-col md:flex-row gap-4">
           <Image src={thImagePlayerTwo} height={120} width={120} alt="TownHall 2" />
