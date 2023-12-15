@@ -20,6 +20,10 @@ const NavbarMain = () => {
       link: "/player"
     },
     {
+      name: "Compare",
+      link: "/compareplayers"
+    },
+    {
       name: "My Teams",
       link: "/teams"
     },
@@ -55,8 +59,9 @@ const NavbarMain = () => {
           <Navbar.Link href="/teams">My Teams</Navbar.Link>
           <Navbar.Link href="/player" css={{'&:focus': {
             outlineColor: '$pink400',
-          },}}>Player/Clan</Navbar.Link>
+          },}}>Search</Navbar.Link>
           <Navbar.Link href="/playerData/2LQUJU9YC">Sample profile</Navbar.Link>
+          <Navbar.Link href="/compareplayers">Compare</Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
         <Navbar.Item>

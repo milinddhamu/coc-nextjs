@@ -93,11 +93,11 @@ const HomeVillageArmy = ({ data }) => {
   return (
     <>
       <main className='flex flex-col justify-center items-center gap-4'>
-        <Collapse.Group shadow css={{ borderRadius: "20px", shadow: "$lg",minWidth:"100%",gap:"0px" }}>
+        <Collapse.Group className="threeDShadowLight" shadow css={{ borderRadius: "20px",minWidth:"100%",gap:"0px" }}>
           <Collapse aria-label="army" className="open-collapse" title={<main className="flex flex-row justify-start items-center">
             <Image src={"/assets/icons/SuperBarbarian.png"} height={35} width={35} alt="super barbarian" />
             <Spacer x={.5} />
-            <Text weight="bold" size={12}>Troops</Text></main>} arrowIcon={<PiSword />} expanded>
+            <Text weight="bold" size={13}>Troops</Text></main>} arrowIcon={<PiSword />} expanded>
             <Grid.Container gap={1} className='flex justify-center h-full w-full'>
               {homeArmy.map((a, i) => {
                 return (
@@ -163,7 +163,7 @@ const HomeVillageArmy = ({ data }) => {
               <div className="relative flex flex-row gap-2 items-center"><Badge isSquared enableShadow css={{ height: "16px", width: "16px", border: "none" }} color="warning" /><Text h5 weight="light" size={10}>Super troop unlocked!</Text></div>
             </div>
           </Collapse>
-          <Collapse aria-label="spells" className="open-collapse" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/ElixirSpells.png"} height={35} width={35} alt="ElixirSpells" /><Spacer x={.5} /><Text weight="bold" size={12}>Spells</Text></main>} arrowIcon={<PiSword />}>
+          <Collapse aria-label="spells" className="open-collapse" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/ElixirSpells.png"} height={35} width={35} alt="ElixirSpells" /><Spacer x={.5} /><Text weight="bold" size={13}>Spells</Text></main>} arrowIcon={<PiSword />}>
             <Grid.Container gap={1} className='flex justify-center h-full w-full'>
               {homeSpells.map((a, i) => {
                 return (
@@ -220,7 +220,7 @@ const HomeVillageArmy = ({ data }) => {
               <div className="flex flex-row gap-2 items-center"><Badge isSquared enableShadow css={{ height: "16px", width: "16px", border: "none" }} color="error" /><Text h5 weight="light" size={10}>Maxed out spells</Text></div>
             </div>
           </Collapse>
-          <Collapse aria-label="heroes" className=" open-collapse" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/PartyKing.png"} height={35} width={35} alt="PartyKing" /><Spacer x={.5} /><Text weight="bold" size={12} >Heroes</Text></main>} arrowIcon={<PiSword />} >
+          <Collapse aria-label="heroes" className=" open-collapse" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/PartyKing.png"} height={35} width={35} alt="PartyKing" /><Spacer x={.5} /><Text weight="bold" size={13} >Heroes</Text></main>} arrowIcon={<PiSword />} >
             <Grid.Container gap={1} className='flex justify-center h-full w-full'>
               {homeHeroes.map((a, i) => {
                 return (
@@ -284,7 +284,7 @@ const HomeVillageArmy = ({ data }) => {
             </div>
           </Collapse>
 
-          <Collapse aria-label="pets" className=" open-collapse" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/Unicorn.png"} height={35} width={35} alt="Unicorn" /><Spacer x={.5} /><Text weight="bold" size={12}  >Pets</Text></main>} arrowIcon={<PiSword />}
+          <Collapse aria-label="pets" className=" open-collapse" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/Unicorn.png"} height={35} width={35} alt="Unicorn" /><Spacer x={.5} /><Text weight="bold" size={13}  >Pets</Text></main>} arrowIcon={<PiSword />}
           >
             <Grid.Container gap={1} className='flex justify-center h-full w-full'>
               {homePets.map((a, i) => {
@@ -340,7 +340,7 @@ const HomeVillageArmy = ({ data }) => {
               <div className="flex flex-row gap-2 items-center"><Badge isSquared enableShadow css={{ height: "16px", width: "16px", border: "none" }} color="error" /><Text h5 weight="light" size={10}>Maxed out pets</Text></div>
             </div>
           </Collapse>
-          <Collapse aria-label="seige" className="open-collapse" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/BattleDrill.png"} height={35} width={35} alt="BattleDrill" /><Spacer x={.5} /><Text weight="bold" size={12} >Seige Machines</Text></main>} arrowIcon={<PiSword />}
+          <Collapse aria-label="seige" className="open-collapse" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/BattleDrill.png"} height={35} width={35} alt="BattleDrill" /><Spacer x={.5} /><Text weight="bold" size={13} >Seige Machines</Text></main>} arrowIcon={<PiSword />}
           >
 
             <Grid.Container gap={1} className='flex justify-center h-full w-full'>

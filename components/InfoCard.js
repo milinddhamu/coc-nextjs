@@ -17,6 +17,7 @@ import { IoLinkOutline } from "react-icons/io5";
 import { townHall, builderHall } from '@/utils/Data/TownHallData';
 import { IoRefresh } from "react-icons/io5";
 import Comments from "./Comments";
+import { GoArrowSwitch } from "react-icons/go";
 
 const gasoekOne = Gasoek_One({
   weight: '400',
@@ -228,6 +229,11 @@ const InfoCard = ({ data }) => {
                   }
                 </Grid.Container>
               </div>
+              <Spacer y={.5} />
+              <div>
+                <button className="flex flex-row items-center gap-2 bg-violet-600 px-8 py-4 rounded-2xl font-semibold">Compare <GoArrowSwitch/> </button>
+              </div>
+              <Spacer y={1} />
             </div>
             <ProfileMainDetails data={data} />
 
