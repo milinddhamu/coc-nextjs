@@ -55,8 +55,8 @@ const BuilderBaseArmy = ({ data }) => {
   return (
     <>
       <main className='flex flex-col justify-center items-center gap-4 '>
-        <Collapse.Group shadow css={{borderRadius:"20px",shadow:"$lg",minWidth:"100%"}}>
-          <Collapse className="open-collapse" aria-label="builder army" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/SneakyArcher.png"} height={35} width={35} alt="SneakyArcher" /><Spacer x={.5}/><Text weight="bold" size={12} >Troops</Text></main>} expanded arrowIcon={<PiSword />}>
+        <Collapse.Group className="threeDShadowLight" css={{borderRadius:"20px",minWidth:"100%"}}>
+          <Collapse className="open-collapse" aria-label="builder army" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/SneakyArcher.png"} height={35} width={35} alt="SneakyArcher" /><Spacer x={.5}/><Text weight="bold" size={13} >Troops</Text></main>} expanded arrowIcon={<PiSword />}>
             <Grid.Container gap={1} className='flex justify-center h-full w-full'>
               {builderArmy.map((a, i) => {
                 return (
@@ -115,7 +115,7 @@ const BuilderBaseArmy = ({ data }) => {
               </div>
           </Collapse>
           
-          <Collapse className="open-collapse" aria-label="builder heroes" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/ArmoredBattleMachine.png"} height={35} width={35} alt="ArmoredBattleMachine" /><Spacer x={.5}/><Text weight="bold" size={12} >Heroes</Text></main>} arrowIcon={<PiSword />} >
+          <Collapse className="open-collapse" aria-label="builder heroes" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/icons/ArmoredBattleMachine.png"} height={35} width={35} alt="ArmoredBattleMachine" /><Spacer x={.5}/><Text weight="bold" size={13} >Heroes</Text></main>} arrowIcon={<PiSword />} >
             <Grid.Container gap={1} className='flex justify-center h-full w-full'>
               {builderHeroes.map((a, i) => {
                 return (

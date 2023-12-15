@@ -53,9 +53,9 @@ const CommentsCard = ({ data ,onChange}) => {
         <div className={`flex flex-row w-full items-baseline ${!editable && 'transparentBg'} px-1`}>
           <Input fullWidth id="comment" ref={commentInputRef} readOnly={!editable}
           shadow={false}
-          style={{color:"none !important",margin:"0",paddingLeft:"0.75rem",borderLeft: session?.user.email === data.authorEmail
+          css={{margin:"0",paddingLeft:"0.75rem",borderLeft: session?.user.email === data.authorEmail
           ? "3px solid rgba(44, 130, 201, 0.5)"
-          : "1px solid rgba(245, 165, 36, 0.5)",borderTop:"none",borderRight:"none",borderBottom:"none" }}
+          : "1px solid rgba(245, 165, 36, 0.5)",borderTop:"none",borderRight:"none",borderBottom:"none",borderRadius:"0px" }}
 
           initialValue={commentText} onChange={(e)=>setCommentText(e.target.value)} />
           {session?.user.email === data.authorEmail &&

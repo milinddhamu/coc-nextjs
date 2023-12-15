@@ -52,7 +52,7 @@ const RightSection = ({ data }) => {
     <>
    
       <main className='flex flex-col gap-6 pb-6 px-6 md:px-3 border-b-[.5px] border-gray-500/20 sm:border-none'>
-        <Card css={{ border: "none",borderRadius:"20px",margin:"0px",padding:"0px",shadow:"$lg" }} className="relative overflow-hidden flex max-w-5xl" >
+        <Card css={{ border: "none",borderRadius:"20px",margin:"0px",padding:"0px" }} className="threeDShadowLight relative overflow-hidden flex max-w-5xl" >
           <Card.Header css={{ position: "absolute", zIndex: 1, top: 0 }}>
             <Col className="flex justify-center items-center">
               <Text size={16} weight="extrabold"  transform="uppercase" className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-blue-500 to-pink-500 animate-text">
@@ -192,7 +192,7 @@ const RightSection = ({ data }) => {
         <Card css={{
           border: "none",
           borderRadius:"20px"
-        }} className="flex flex-col items-center w-full overflow-scroll cursor-pointer scrollbar-none" >
+        }} className="threeDShadowLight flex flex-col items-center w-full overflow-scroll cursor-pointer scrollbar-none" >
           <Image
             src={Calendar}
             alt="Calendar"

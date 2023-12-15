@@ -67,9 +67,9 @@ export default function Home({data}) {
       </div> :
         <>
           <main className="relative transition-all">
-            <div className="flex flex-row cursor-pointer pb-2 pt-1">
+            <div className="flex flex-row cursor-pointer -mt-3 py-2">
               <Marquee gradient speed={80} direction="left" loop={0} autoFill gradientColor={gradientColorMarquee}>
-              <Text size={86} h1 weight="black" css={{lineHeight:"0.75",opacity:"0.4"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
+              <Text size={100} h1 weight="black" css={{lineHeight:"0.9",opacity:"0.4",letterSpacing:"0.01rem"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
               </Marquee>
             </div>
             <section className="flex flex-col items-center justify-center px-4">

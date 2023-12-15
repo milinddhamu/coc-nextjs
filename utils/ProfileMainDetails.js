@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import NavbarMain from "@/components/NavbarMain";
 
 const ProfileMainDetails = ({ data }) => {
+  console.log(data , "data zzzzzzzzzzzzzzzzzzzzzz")
   const roleOfPlayer = (data?.role === "admin") ? "elder" : data?.role
   const mainDetails =  [
     {
@@ -109,12 +110,12 @@ const ProfileMainDetails = ({ data }) => {
     <>
       <div className='w-full'>
         <Card
+          className="threeDShadowLight"
           css={{
             border: 'none',
-            shadow:"$lg",
             borderRadius:"20px",
             padding:"0px",
-            margin:"0px"
+            margin:"0px",
           }}
         >
           <Card.Body>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Container, Text, Row, Col, User, Avatar, Button, Loading, Badge, Spacer, Grid, Tooltip } from '@nextui-org/react'
+import { Card, Container, Text, Row, Col, User, Avatar, Button, Loading, Badge, Spacer, Grid, Tooltip,Modal,Input } from '@nextui-org/react'
 import Image from 'next/image';
 import ProfileMainDetails from '@/utils/ProfileMainDetails';
 import HomeVillageArmy from '@/utils/HomeVillageArmy';
@@ -17,6 +17,9 @@ import { IoLinkOutline } from "react-icons/io5";
 import { townHall, builderHall } from '@/utils/Data/TownHallData';
 import { IoRefresh } from "react-icons/io5";
 import Comments from "./Comments";
+import { GoArrowSwitch } from "react-icons/go";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const gasoekOne = Gasoek_One({
   weight: '400',
@@ -43,7 +46,13 @@ const InfoCard = ({ data }) => {
   const townHallStorage = townHall[data.townHallLevel]?.url
   const thImage = (data.townHallLevel > 11) ? townHallDefense : townHallStorage
   const bhImage = builderHall[data.builderHallLevel].url
-  const [army, setArmy] = useState(true)
+  const [army, setArmy] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [ compareTag, setCompareTag] = useState("");
+  const handler = () => setVisible(true);
+  const closeHandler = () => {
+    setVisible(false);
+  };
   const colorHelp = (army) ? 'bg-gradient-to-tr from-violet-600 via-purple-400/0 to-black/0 ' : 'saturate-0 transition-all ease-in duration-800'
   function Counter({ from, to }) {
     const nodeRef = useRef();
@@ -88,6 +97,18 @@ const InfoCard = ({ data }) => {
     damping: 10,
     stiffness: 200,
     delay: 0.5,
+  };
+
+  const handleTagInputChange = (e) => setCompareTag(e.target.value);
+  const handleCompareButton = () => {
+    if(compareTag){
+      const compareTags = [data.tag.replace("#","") , compareTag];
+      console.log(compareTags)
+    router.push(`/compareProfile/${compareTags.join('-')}`, undefined, { shallow: true });
+    }else {
+      toast.warn('Please enter clan tags');
+    }
+
   };
   return (
     <>
@@ -228,6 +249,43 @@ const InfoCard = ({ data }) => {
                   }
                 </Grid.Container>
               </div>
+              <Spacer y={.5} />
+              <div>
+                <button className="flex flex-row items-center gap-2 bg-violet-600 px-8 py-4 rounded-2xl font-semibold" onClick={handler}>Compare <GoArrowSwitch/> </button>
+              </div>
+
+              {/* Modal for Compare */}
+              <Modal
+        closeButton
+        aria-labelledby="modal-title"
+        open={visible}
+        onClose={closeHandler}
+      >
+        <Modal.Header>
+          <Text id="modal-title" size={18}>
+            Enter a profile tag
+          </Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Input
+            clearable
+            bordered
+            fullWidth
+            color="warning"
+            size="lg"
+            placeholder="2LQUJU9YC"
+            contentLeft="#"
+            onChange={handleTagInputChange}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button auto color="secondary" onPress={handleCompareButton}>
+            Compare
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+              <Spacer y={1} />
             </div>
             <ProfileMainDetails data={data} />
 
@@ -279,6 +337,19 @@ const InfoCard = ({ data }) => {
             <Comments playerTag={data.tag} />
           </span>
         </Card>
+        <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       </Container>
 
 
