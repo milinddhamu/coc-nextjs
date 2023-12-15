@@ -45,9 +45,9 @@ const CompareMainComponent = ({ playerOneData, playerTwoData }) => {
         
           <Text b className="pt-1" size={18}>{playerOneData.name}</Text> 
           </div>               
-          <div className="flex flex-col md:flex-row gap-4">
-          <Image src={bhImagePlayerOne} height={120} width={120} alt="BuilderHall 1" />
-          <Image src={thImagePlayerOne} height={120} width={120} alt="TownHall 1" />
+          <div className="flex flex-col-reverse md:flex-row gap-4">
+          <Image src={bhImagePlayerOne} height={120} width={120} className="aspect-square" alt="BuilderHall 1" />
+          <Image src={thImagePlayerOne} height={120} width={120} className="aspect-square" alt="TownHall 1" />
           </div>
         </div>
         <div className="text-xl flex justify-center items-center "><GoArrowSwitch /></div>
