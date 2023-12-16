@@ -5,8 +5,6 @@ import "@theme-toggles/react/css/Classic.css"
 import { motion,AnimatePresence,useAnimation } from "framer-motion";
 import RevealText from "@/utils/RevealText";
 import { useState, useEffect } from "react";
-import Marquee from "react-fast-marquee";
-import { GoArrowUpRight } from "react-icons/go";
 import {useRouter} from "next/router"
 import axios from "axios";
 import IndexCaraousal from "@/components/IndexCaraousal";
@@ -15,6 +13,8 @@ import { locationsState, userState } from "@/recoil/storage";
 import { useSession } from "next-auth/react";
 import Footer from "@/utils/Footer";
 import GlobalChat from "@/components/GlobalChat";
+import { GoArrowSwitch } from "react-icons/go";
+import { IoSearchSharp } from "react-icons/io5";
 
 export default function Home({data}) {
   const {data:session} = useSession;
@@ -67,6 +67,7 @@ export default function Home({data}) {
       subHeaderText: 'Enter your clan or profile tag',
       imageSrc: '/assets/backgroundPng/MagicWardenCropped.png',
       altText: 'Search card bg',
+      icon:<IoSearchSharp />
     },
     {
       key: 'compare-card',
@@ -76,6 +77,7 @@ export default function Home({data}) {
       subHeaderText: 'Enter two tags to compare',
       imageSrc: '/assets/backgroundPng/shadowRcCropped.png',
       altText: 'compare card bg',
+      icon:<GoArrowSwitch />
     },
   ];
   return (
@@ -107,7 +109,7 @@ export default function Home({data}) {
                 scale: 1,
                 filter: "blur(0px)",
               }}
-              className={`z-10 gap-4 max-w-4xl flex flex-col md:flex-row rounded-3xl p-6 backdrop-blur-[4px] ${isDark ? "bg-gray-500/10 threeDShadowDark" : "bg-gray-500/10 threeDShadowLight"}`}>
+              className={`z-10 gap-4 max-w-5xl flex flex-col md:flex-row rounded-3xl p-6 backdrop-blur-[4px] ${isDark ? "bg-gray-500/10 threeDShadowDark" : "bg-gray-500/10 threeDShadowLight"}`}>
                 <Grid.Container>
                   <Grid>
                   <Text h2 weight="semibold" className="text-justify">Track and analyze your progress in Clash of Clans with ease. Simply enter your player tag or clan tag in the form below to retrieve valuable insights and statistics.</Text>
@@ -148,14 +150,20 @@ export default function Home({data}) {
           className={data.className}
           onPress={data.onPress}
         >
-          <Card.Header css={{ position: 'absolute', zIndex: 1, bottom: 0 }}>
-            <Col className="px-1">
+          <Card.Header css={{ position: 'absolute', zIndex: 1, bottom: 0 }} className="px-4">
+           
+            <Col>
               <Text size={15} weight="black" className="group-hover:tracking-[.27rem] transition-all duration-200 ease-in" transform="uppercase" css={{ letterSpacing: '0.1rem' }} color="#ffffff">
                 {data.headerText}
               </Text>
               <Text size={12} color="#ffffffAA" weight="semibold" transform="uppercase" css={{ letterSpacing: '0.08rem' }}>
                 {data.subHeaderText}
               </Text>
+            </Col>
+            <Col className="max-w-fit">
+            <Row justify="flex-end">
+            <div className="text-2xl text-white pt-2">{data.icon}</div>
+            </Row>
             </Col>
           </Card.Header>
           <Card.Image
