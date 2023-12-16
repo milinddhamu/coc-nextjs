@@ -74,7 +74,7 @@ export default function Home({data}) {
       onPress: handleCompareCard,
       headerText: 'Compare profile',
       subHeaderText: 'Enter two tags to compare',
-      imageSrc: '/assets/backgroundPng/ShadowRcCropped.png',
+      imageSrc: '/assets/backgroundPng/shadowRcCropped.png',
       altText: 'compare card bg',
     },
   ];
