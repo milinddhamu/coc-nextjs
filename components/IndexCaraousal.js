@@ -5,7 +5,6 @@ import CaraousalCard from "@/utils/CaraousalCard";
 import { Text } from "@nextui-org/react";
 import {useState} from 'react';
 const IndexCaraousal = ({ data }) => {
-  console.log(data, "caraousal")
   const [sliderRef] = useKeenSlider({
     mode: "snap",
     loop: true,

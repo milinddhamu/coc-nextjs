@@ -56,7 +56,28 @@ export default function Home({data}) {
     }, 500)
   }, [])
 
-  const gradientColorMarquee = isDark ? [0, 0, 0] : [255, 255, 255] 
+  const handleCompareCard = () => router.push("/compareplayers");
+  const handleSearchCard = () => router.push("/player");
+  const cardData = [
+    {
+      key: 'search-card',
+      className: 'group threeDShadowLight bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-300/80 via-violet-600/80 to-violet-900 border-none rounded-[20px]',
+      onPress: handleSearchCard,
+      headerText: 'Search for profile',
+      subHeaderText: 'Enter your clan or profile tag',
+      imageSrc: '/assets/backgroundPng/MagicWardenCropped.png',
+      altText: 'Search card bg',
+    },
+    {
+      key: 'compare-card',
+      className: 'group threeDShadowLight bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-300/80 via-emerald-600/80 to-emerald-900 border-none rounded-[20px]',
+      onPress: handleCompareCard,
+      headerText: 'Compare profile',
+      subHeaderText: 'Enter two tags to compare',
+      imageSrc: '/assets/backgroundPng/ShadowRcCropped.png',
+      altText: 'compare card bg',
+    },
+  ];
   return (
     <>
 
@@ -66,17 +87,13 @@ export default function Home({data}) {
         </div>
       </div> :
         <>
-          <main className="relative transition-all">
-            <div className="flex flex-row cursor-pointer -mt-3 py-2">
-              <Marquee gradient speed={80} direction="left" loop={0} autoFill gradientColor={gradientColorMarquee}>
-              <Text size={100} h1 weight="black" css={{lineHeight:"0.9",opacity:"0.4",letterSpacing:"0.01rem"}}>&nbsp;CLASH&nbsp;OF&nbsp;CLANS&nbsp;PROFILE&nbsp;TRACKER&nbsp;</Text>
-              </Marquee>
-            </div>
+          <main className="relative transition-all pt-6">
             <section className="flex flex-col items-center justify-center px-4">
-              <motion.div 
+              <div className="flex flex-col-reverse">
+            <motion.div 
               initial={{
                 opacity: 0,
-                scale: 1.2,
+                scale: 0.9,
                 filter: "blur(7px)",
               }}
               transition={{
@@ -90,7 +107,7 @@ export default function Home({data}) {
                 scale: 1,
                 filter: "blur(0px)",
               }}
-              className={`z-10 gap-4 max-w-8xl flex flex-col md:flex-row rounded-3xl p-6 backdrop-blur-[4px] ${isDark ? "bg-gray-500/10 threeDShadowDark" : "bg-gray-500/10 threeDShadowLight"}`}>
+              className={`z-10 gap-4 max-w-4xl flex flex-col md:flex-row rounded-3xl p-6 backdrop-blur-[4px] ${isDark ? "bg-gray-500/10 threeDShadowDark" : "bg-gray-500/10 threeDShadowLight"}`}>
                 <Grid.Container>
                   <Grid>
                   <Text h2 weight="semibold" className="text-justify">Track and analyze your progress in Clash of Clans with ease. Simply enter your player tag or clan tag in the form below to retrieve valuable insights and statistics.</Text>
@@ -105,7 +122,11 @@ export default function Home({data}) {
                   </Grid>
                   <Grid xs={12} alignItems="center">
                     <Badge color="primary" variant="dot" />
-                    <Text className="text-justify" css={{ ml: "$4" }}>Monitor your clan's performance, such as its members, clan level, and war log.</Text>
+                    <Text className="text-justify" css={{ ml: "$4" }}>Monitor your clan's performance, such as its members, clan level, top members with war stars , etc.</Text>
+                  </Grid>
+                  <Grid xs={12} alignItems="center">
+                    <Badge color="warning" variant="dot" />
+                    <Text className="text-justify" css={{ ml: "$4" }}>Compare your performance with other players and clans to stay competitive.</Text>
                   </Grid>
                   <Grid xs={12} alignItems="center">
                     <Badge color="secondary" variant="dot" />
@@ -115,51 +136,41 @@ export default function Home({data}) {
                     <Badge color="success" variant="dot" />
                     <Text className="text-justify" css={{ ml: "$4" }}>Keep track of your progress over time with historical data and trends.<p className="text-violet-500 text-xs">coming soon ...</p></Text>
                   </Grid>
-                  <Grid xs={12} alignItems="center">
-                    <Badge color="warning" variant="dot" />
-                    <Text className="text-justify" css={{ ml: "$4" }}>Compare your performance with other players and clans to stay competitive.<p className="text-violet-500 text-xs">coming soon ...</p></Text>
-                  </Grid>
-                  <Spacer />
-                  <Grid>
-                    <Text weight="thin" className="text-justify">
-                    Our Profile Tracker provides you with up-to-date and accurate information directly from the official Clash of Clans API. Join thousands of Clashers who rely on our tool to stay informed and improve their game.
-                    </Text>
-                  </Grid>
-                </Grid.Container>
-                <div className="flex md:border-r-[.5px] border-b-[.5px] border-slate-400/30 mx-1"></div>
-                <Grid.Container gap={1} className="relative">
-                  <Grid xs={12} alignItems="start">
-                  <Text className="text-justify" weight="thin">
-                  Start tracking your Clash of Clans progress today and dominate the battlefield like never before. Join the ranks of the strongest clans and become a legendary player. Let's clash on!
-                  </Text>
-                  </Grid>
-                  <Grid xs={12} alignItems="end" className="-mb-8 -mt-8">
-                     <div className="grid grid-cols-3 justify-between gap-3 items-center">
-                     <motion.div
-                        id="image-container"
-                        className="relative col-span-2"
-                        style={{ width: "250px", height: "250px" }} // Adjust width and height as needed
-                        initial={{ y: -150, opacity: 0 }}
-                        animate={controls}
-                      >
-                        <motion.img
-                          className="absolute inset-0 object-cover motion-safe:animate-bounce-slow"
-                          src="/assets/backgroundPng/MagicWarden.png"
-                          alt="Warden Skin"
-                        />
-                      </motion.div>
-                    <Text weight="bold" className="text-center">
-                    Uncover your Clash of Clans profile! Use the search button to access your game stats and history.
-                    </Text>
-                    </div>
-                    </Grid>
-                  <Grid xs={12} alignItems="end" justify="flex-end" className="overflow-hidden">
-                  <Button color="secondary" className="bg-gradient-to-tr from-violet-800 via-violet-600 to-yellow-200 animate-text m-2 w-full" auto onPress={()=> router.push("/player")}>
-                  <Text css={{letterSpacing:"0.02rem"}}>Search Player/Clan</Text>
-                  </Button>
-                  </Grid>
-                </Grid.Container>
-              </motion.div>
+                  </Grid.Container>
+
+        </motion.div>
+        <Spacer y={1.5}/>
+            <div className="flex flex-col sm:flex-row gap-6">
+            {cardData.map((data) => (
+        <Card
+          key={data.key}
+          isPressable
+          className={data.className}
+          onPress={data.onPress}
+        >
+          <Card.Header css={{ position: 'absolute', zIndex: 1, bottom: 0 }}>
+            <Col className="px-1">
+              <Text size={15} weight="black" className="group-hover:tracking-[.27rem] transition-all duration-200 ease-in" transform="uppercase" css={{ letterSpacing: '0.1rem' }} color="#ffffff">
+                {data.headerText}
+              </Text>
+              <Text size={12} color="#ffffffAA" weight="semibold" transform="uppercase" css={{ letterSpacing: '0.08rem' }}>
+                {data.subHeaderText}
+              </Text>
+            </Col>
+          </Card.Header>
+          <Card.Image
+            src={data.imageSrc}
+            objectFit="cover"
+            width="100%"
+            className="opacity-75 group-hover:brightness-50 group-hover:scale-105 group-hover:blur-sm group-hover:bg-black/30 transition-all ease-in duration-200"
+            height={140}
+            alt={data.altText}
+          />
+        </Card>
+      ))}
+            </div>
+
+            </div>
               <Text weight="thin" className="p-6 text-justify">
               We're dedicated to continuously improving our Profile Tracker to meet the needs of Clash of Clans players like you. Stay tuned for exciting updates and new features!
               </Text>
