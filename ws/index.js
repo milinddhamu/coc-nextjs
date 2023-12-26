@@ -6,6 +6,8 @@ const { initClashOfClansClient } = require('./helpers/cocauth');
 const { sendDiscordWebhook } = require('./helpers/errorHandler');
 const jwt = require('jsonwebtoken');
 const { Exception } = require('handlebars');
+const {data} = require('autoprefixer');
+const promises = [];
 
 
 const app = express();
@@ -64,25 +66,139 @@ const startServer = async () => {
         console.log('[INFO] Received message:', message);
         if (typeof message === 'string' && message.startsWith('{')) {
           message = JSON.parse(message);
-          if (message.type === 'getClanInfo') {
-            clashClient.getClan(message.data.clanId)
+          switch (message.type) {
+            case 'getClanInfo':
+              if (!message.data.clanId) {
+                ws.send(JSON.stringify({ error: 'Missing clanId' }));
+                return;
+              }else{
+                clashClient.getClan(message.data.clanId)
+                .then((response) => {
+                  ws.send(JSON.stringify(response));
+                })
+                .catch((error) => {
+                  console.error('[ERROR] Failed to get clan info:', error.message);
+                  ws.send(JSON.stringify({ error: error.message }));
+                });
+              }
+              break;
+            case 'getPlayersInfo':
+              if (!message.data.playerID) {
+                ws.send(JSON.stringify({ error: 'Missing playerID' }));
+                return;
+              }else{
+                clashClient.getPlayer(message.data.playerID)
+                .then((response) => {
+                  ws.send(JSON.stringify(response));
+                })
+                .catch((error) => {
+                  console.error('[ERROR] Failed to get players info:', error.message);
+                  ws.send(JSON.stringify({ error: error.message }));
+                });
+              }
+              break;
+            case 'getClanMembers':
+              if (!message.data.clanMemberTag) {
+                ws.send(JSON.stringify({ error: 'Missing clanMemberTag' }));
+                return;
+              }
+              for (let i = 0; i < message.data.clanMemberTag.length; i++) {
+                const playerPromise = clashClient.getPlayer(message.data.clanMemberTag[i])
+                .then((response) => {
+                      console.log('[INFO] Received response for player:', response.name);
+                    return response;
+                })
+                .catch((error) => {
+                  console.error('[ERROR] Failed to get clan member:', error.message);
+                  return null;
+                });
+                promises.push(playerPromise);
+              }
+              Promise.all(promises)
+              .then((responses) => {
+                const filteredResponses = responses.filter((response) => response !== null);
+                ws.send(JSON.stringify(filteredResponses));
+                })
+                .catch((error) => {
+                  console.error('[ERROR] Failed to process all requests:', error.message);
+                  ws.send(JSON.stringify({ error: 'Failed to process all requests' }));
+                });
+
+              break;
+
+            case 'GoldPassSeason':
+              clashClient.getGoldPassSeason()
               .then((response) => {
                 ws.send(JSON.stringify(response));
               })
               .catch((error) => {
-                console.error('[ERROR] Failed to get clan info:', error.message);
+                console.error('[ERROR] Failed to get gold pass season:', error.message);
                 ws.send(JSON.stringify({ error: error.message }));
               });
-          } else if (message.type === 'getPlayersInfo') {
-            clashClient.getPlayer(message.data.playerID)
+              break;
+
+            case 'getLocationRanking':
+              if (!message.data.locationId) {
+                ws.send(JSON.stringify({ error: 'Missing locationId' }));
+                return;
+              }
+              let sendData = [];
+              endpoints = ['getClanRanks', 'getPlayerRanks', 'getBuilderBaseClanRanks','getBuilderBasePlayerRanks', 'getClanCapitalRanks']
+              clashClient.getClanRanks(message.data.locationId)
               .then((response) => {
-                ws.send(JSON.stringify(response));
+                sendData = { type: endpoints[0], data: response };
+                ws.send(JSON.stringify(sendData));
               })
               .catch((error) => {
-                console.error('[ERROR] Failed to get players info:', error.message);
+                console.error('[ERROR] Failed to get location ranking:', error.message);
                 ws.send(JSON.stringify({ error: error.message }));
               });
+
+              clashClient.getPlayerRanks(message.data.locationId)
+              .then((response) => {
+                sendData = { type: endpoints[1], data: response };
+                ws.send(JSON.stringify(sendData));
+              })
+              .catch((error) => {
+                console.error('[ERROR] Failed to get location ranking:', error.message);
+                ws.send(JSON.stringify({ error: error.message }));
+              });
+
+              clashClient.getBuilderBaseClanRanks(message.data.locationId)
+              .then((response) => {
+                sendData = { type: endpoints[2], data: response };
+                ws.send(JSON.stringify(sendData));
+              })
+              .catch((error) => {
+                console.error('[ERROR] Failed to get location ranking:', error.message);
+                ws.send(JSON.stringify({ error: error.message }));
+              });
+
+              clashClient.getBuilderBasePlayerRanks(message.data.locationId)
+              .then((response) => {
+                sendData = { type: endpoints[3], data: response };
+                ws.send(JSON.stringify(sendData));
+              })
+              .catch((error) => {
+                console.error('[ERROR] Failed to get location ranking:', error.message);
+                ws.send(JSON.stringify({ error: error.message }));
+              });
+              
+              clashClient.getClanCapitalRanks(message.data.locationId)
+              .then((response) => {
+                sendData = { type: endpoints[4], data: response };
+                ws.send(JSON.stringify(sendData));
+              })
+              .catch((error) => {
+                console.error('[ERROR] Failed to get location ranking:', error.message);
+                ws.send(JSON.stringify({ error: error.message }));
+              });
+
+              break;
+
+             
           }
+           
         }
       });
 
