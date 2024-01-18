@@ -50,7 +50,12 @@
     "sharp": "^0.32.2",
     "swiper": "^10.0.4",
     "tailwind-scrollbar": "^3.0.4",
-    "tailwindcss": "3.3.2"
+    "tailwindcss": "3.3.2",
+    "clashofclans.js": "^3.2.0",
+    "dotenv": "^16.3.1",
+    "handlebars": "^4.7.8",
+    "jsonwebtoken": "^9.0.2",
+    "websocket": "^1.0.34"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
