@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 
 
 const CaraousalInfo = ({ allData, index, endpoint }) => {
+  
   const router = useRouter();
-  console.log(allData)
   const textVariants = {
     hidden: { opacity: 0, x: '100%' },
     visible: { opacity: 1, x: '0%' },
@@ -57,9 +57,9 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
   }
   return (
     <>
-      <Row align="center">
+      <Row align="center ">
         <Col span={1}>
-          <Text weight="extrabold" size={12} css={{letterSpacing:"0.01rem"}}>{index} .</Text>
+          <Text weight="bold" size={12} css={{letterSpacing:"0.01rem"}}>{index} .</Text>
         </Col>
         <Col span={1}>
           <Image
@@ -69,8 +69,21 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
             width={24}
           />
         </Col>
-        <Col span={8}>
-          <div className="flex flex-col items-start overflow-hidden line-clamp-1 ">
+        {/* <Col span={2}>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+              className="flex flex-row justify-around items-center group">
+              <div className='flex flex-row justify-center items-center relative'>
+                <div className="opacity-0 w-full h-full absolute bg-gradient-to-bl from-gray-100 via-slate-300 to-slate-800 blur-lg animate-text rounded-full group-hover:opacity-50 transition-all duration-800 ease-linear "></div>
+                <Card.Image src='/assets/others/XP.png' showSkeleton containerCss={{ borderRadius: "100%" }} height={20} width={20} className='drop-shadow-md' alt="xp" />
+                <div className='absolute text-white text-xs font-extrabold drop-shadow-[0.8px_2px_0.1px_rgba(0,0,0,1)] pb-1'>{245}</div>
+              </div>
+            </motion.div>
+            </Col> */}
+        <Col span={7}>
+          <div className="flex flex-col overflow-hidden line-clamp-1 ">
             <Text b size={14}>{allData?.name}</Text>
             {(endpoint === "players" || endpoint === "players-versus") ?
               <Text b css={{opacity:"0.7"}} color={allData?.clan?.name ? "warning" : "error"} size={12}>{allData?.clan?.name || "not in clan"}</Text> 
@@ -79,7 +92,7 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
             }
           </div>
         </Col>
-        <Col span={3}>
+        <Col span={2}>
           <div className="flex flex-row items-center">
             <Image
               src='/assets/others/Trophy.png'
@@ -104,6 +117,9 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
               {endpointData?.trophies}
             </Badge>
           </div>
+        </Col>
+        <Col span={1}>
+          <Button auto css={{ backgroundColor: "" }} onClick={handleVisitSubmit} size="xs" flat color="success"><FiExternalLink /></Button>
         </Col>
       </Row>
     </>

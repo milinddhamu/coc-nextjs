@@ -208,7 +208,7 @@ export default function Home({data}) {
 
 //   // Create an array of promises for each endpoint request
 //   const requests = endpoints.map(async (endpoint) => {
-//     const url = `https://api.clashofclans.com/v1/locations/${locationId}/rankings/${endpoint}?limit=${limit}`;
+//     const url = `https://cocproxy.royaleapi.dev/v1/locations/${locationId}/rankings/${endpoint}?limit=${limit}`;
 //     const options = {
 //       method: 'GET',
 //       url,
@@ -227,7 +227,7 @@ export default function Home({data}) {
 //   });
 
 //   // Add request for the locations endpoint
-//   const locationsUrl = `https://api.clashofclans.com/v1/locations`;
+//   const locationsUrl = `https://cocproxy.royaleapi.dev/v1/locations`;
 //   const locationsOptions = {
 //     method: 'GET',
 //     url: locationsUrl,
