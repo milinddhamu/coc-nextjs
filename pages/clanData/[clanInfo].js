@@ -52,7 +52,7 @@ const ClanInfo = ({ data }) => {
 export async function getServerSideProps(context) {
   const { clanInfo } = context.params;
 
-  const clanApiUrl = `https://cocproxy.royaleapi.dev/v1/clans/%23${clanInfo}`;
+  const clanApiUrl = `https://api.clashofclans.com/v1/clans/%23${clanInfo}`;
   const clanOptions = {
     method: 'GET',
     url: clanApiUrl,
@@ -63,11 +63,12 @@ export async function getServerSideProps(context) {
 
   try {
     const clanResponse = await axios.request(clanOptions);
+    console.log(clanResponse);
     const clanData = clanResponse.data;
     const memberTags = clanData.memberList.map((member) => member.tag.replace('#', ''));
 
     const playerDataPromises = memberTags.map(async (tag) => {
-      const playerApiUrl = `https://cocproxy.royaleapi.dev/v1/players/%23${tag}`;
+      const playerApiUrl = `https://api.clashofclans.com/v1/players/%23${tag}`;
       const playerOptions = {
         method: 'GET',
         url: playerApiUrl,
