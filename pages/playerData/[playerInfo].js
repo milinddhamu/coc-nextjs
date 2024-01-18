@@ -68,8 +68,8 @@ export async function getServerSideProps(context) {
   }
 
   const apiUrls = [
-    `https://api.clashofclans.com/v1/players/%23${playerInfo}`,
-    `https://api.clashofclans.com/v1/goldpass/seasons/current`,
+    `https://cocproxy.royaleapi.dev/v1/players/%23${playerInfo}`,
+    `https://cocproxy.royaleapi.dev/v1/goldpass/seasons/current`,
   ];
 
   const axiosRequests = apiUrls.map((url) =>

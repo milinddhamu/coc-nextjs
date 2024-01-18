@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 
 
 const CaraousalInfo = ({ allData, index, endpoint }) => {
+  
   const router = useRouter();
   const textVariants = {
     hidden: { opacity: 0, x: '100%' },
@@ -32,7 +33,7 @@ const CaraousalInfo = ({ allData, index, endpoint }) => {
         break;
       case 'clans-builder-base':
         data.image = allData?.badgeUrls.small;
-        data.trophies = allData?.clanVersusPoints;
+        data.trophies = allData?.clanBuilderBasePoints;
         break;
       case 'capitals':
         data.image = allData?.badgeUrls.small;

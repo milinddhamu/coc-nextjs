@@ -22,8 +22,7 @@ const IndexCaraousal = ({ data }) => {
       spacing: 30,
     },
   });
-  const entries = Object.entries(data)
-  
+  const entries = Object.entries(data);  
   return (
     <div ref={sliderRef} className="keen-slider bg-gradient-to-b from-violet-500/40 via-violet-500/20 to-violet-500/0">
       <div className="keen-slider__slide flex flex-col justify-start items-start p-12 sm:p-24">

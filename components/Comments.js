@@ -62,7 +62,7 @@ const Comments = ({playerTag}) => {
   };
 
   return (
-    <Card className="threeDShadowLight" css={{borderRadius:"20px",border:"none"}}>
+    <Card css={{borderRadius:"20px",border:"none"}} className="MaterialShadow">
       <Card.Header css={{padding:"14px 20px"}}>
         <Text>Comments</Text>
       </Card.Header>

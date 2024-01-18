@@ -34,8 +34,8 @@ export async function getServerSideProps(context) {
   console.log(playerOne);
 
   const apiUrls = [
-    `https://api.clashofclans.com/v1/players/%23${playerOne}`,
-    `https://api.clashofclans.com/v1/players/%23${playerTwo}`,
+    `https://cocproxy.royaleapi.dev/v1/players/%23${playerOne}`,
+    `https://cocproxy.royaleapi.dev/v1/players/%23${playerTwo}`,
   ];
 
   const axiosRequests = apiUrls.map((url) =>
