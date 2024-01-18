@@ -109,7 +109,7 @@ export default function Home({data}) {
                 scale: 1,
                 filter: "blur(0px)",
               }}
-              className={`z-10 gap-4 max-w-5xl flex flex-col md:flex-row rounded-3xl p-6 backdrop-blur-[4px] ${isDark ? "bg-gray-500/10 threeDShadowDark" : "bg-gray-500/10 threeDShadowLight"}`}>
+              className={`z-10 gap-4 max-w-5xl flex flex-col md:flex-row rounded-3xl p-6 backdrop-blur-[4px] ${isDark ? "bg-gray-500/10 " : "bg-gray-500/10 "}`}>
                 <Grid.Container>
                   <Grid>
                   <Text h2 weight="semibold" className="text-justify">Track and analyze your progress in Clash of Clans with ease. Simply enter your player tag or clan tag in the form below to retrieve valuable insights and statistics.</Text>
@@ -183,28 +183,6 @@ export default function Home({data}) {
               We're dedicated to continuously improving our Profile Tracker to meet the needs of Clash of Clans players like you. Stay tuned for exciting updates and new features!
               </Text>
               </section>
-          
-            <Spacer y={1}/>
-            <div className="flex flex-col sm:flex-row justify-center w-full px-4 gap-2 sm:gap-12 transition-all duration-500 ">
-              <div className="flex flex-col gap-4">
-            <div className="flex flex-col justify-start items-start coc-text"> 
-              <Text weight="extrabold" css={{
-                      textGradient: "0deg, $yellow400 -20%, $yellow700 100%",
-                      lineHeight: "1.25"
-                  }} size={50}>
-                GLOBAL
-              </Text>
-              <Text weight="extrabold" css={{
-                      textGradient: "0deg, $yellow400 -20%, $yellow700 100%",
-                      lineHeight: "1.25"
-                  }} size={50}>
-                CHAT
-              </Text>
-            </div>
-            </div>
-            <GlobalChat />
-
-            </div>
             <Spacer y={1}/>
             {data && 
           <IndexCaraousal data={data} />

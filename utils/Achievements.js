@@ -60,11 +60,10 @@ const Achievements = ({ data }) => {
   return (
     <>
       <main className='max-w-5xl'>
-        <Collapse.Group  css={{
+        <Collapse.Group shadow css={{
           maxHeight: '600px',
           borderRadius: "20px",
-          backgroundColor:isDark && "#16181A"
-        }} className='threeDShadowLight scrollbar-hide relative scrollbar-thin overflow-auto overflow-y-scroll min-w-full'>
+        }} className='MaterialShadow scrollbar-hide relative scrollbar-thin overflow-auto overflow-y-scroll min-w-full'>
           <Collapse id="achievementsScroll" title={<main className="flex flex-row justify-start items-center"><Image src={"/assets/others/Three_Stars.png"} height={35} width={35} alt="Achievements" /><Spacer x={.5}/><Text weight="bold" size={13} >Achievements</Text></main>} className="open-collapse min-w-full p-1" arrowIcon={<PiSword />}>
             <table className="table-auto min-w-full">
               <thead>
