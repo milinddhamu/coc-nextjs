@@ -1,7 +1,5 @@
 ![Project Banner](https://user-images.githubusercontent.com/68379239/270390331-2d91111e-018c-46ed-b224-2f2df1d9bd92.jpg)
 
-[![wakatime](https://wakatime.com/badge/github/milinddhamu/coc-nextjs.svg)](https://wakatime.com/badge/github/milinddhamu/coc-nextjs)
-
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 #### Link - https://coc-nextjs.vercel.app/
