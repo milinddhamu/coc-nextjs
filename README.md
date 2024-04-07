@@ -42,38 +42,6 @@ The project also incorporates comment features and team creation, enhancing the 
 - Express (for API data fetching)
 - Firebase (for data storage)
 
-## Screenshots
-
-![Home page](https://user-images.githubusercontent.com/68379239/270390264-2065b9a5-a01f-4d12-b6ff-38e3adbe02f9.png)
-
-<p align="center">Home Page ⇧</p>
-
-![Search page](https://user-images.githubusercontent.com/68379239/270390282-831ec684-4644-44e0-a579-469faf1d1394.png)
-
-<p align="center">Search Page ⇧</p>
-
-![Profile page](https://user-images.githubusercontent.com/68379239/270390294-a4783fb1-c30e-4d62-9922-77b5ca929da3.png)
-
-<p align="center">Profile Page ⇧</p>
-
-![Clan page](https://user-images.githubusercontent.com/68379239/270390307-de540ff4-b9d2-4e1d-ad9f-acb3f3172c88.png)
-
-<p align="center">Clan Page ⇧</p>
-
-![Login page](https://user-images.githubusercontent.com/68379239/270390310-67b69976-c9e1-4012-a345-1f8c07540adb.png)
-
-<p align="center">Login Page ⇧</p>
-
-![Team creation](https://user-images.githubusercontent.com/68379239/270390321-33743c55-27f1-4cd4-9f4f-6b5bcfdb5a77.png)
-
-<p align="center">Team creation ⇧</p>
-
-![Created Teams](https://user-images.githubusercontent.com/68379239/270390326-fe359026-8cdb-4f06-92e6-17a85898da53.png)
-
-<p align="center">Created teams (required authentication) ⇧</p>
-
-
-
 ## Setup
 
 If someone wants to run your project locally, provide detailed instructions on how to do so. Include any dependencies that need to be installed, environment setup, or configuration steps.
